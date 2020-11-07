@@ -1,0 +1,219 @@
+    1  sudo raspi-config
+    2  exit
+    3  wget -O - https://raw.githubusercontent.com/pjgpetecodes/dotnet5pi/master/install.sh | sudo bash
+    4  sudo apt-get install samba samba-common-bin
+    5  sudo mkdir -m 1777 /share
+    6  sudo nano /etc/samba/smb.conf
+    7  sudo smbpasswd -a pi
+    8  sudo /etc/init.d/samba restart
+    9  sudo reboot
+   10  cd sh
+   11  dir
+   12  cd /share
+   13  dir
+   14  mkdir dotnet5sensehat
+   15  cd dotnet5sensehat/
+   16  dotnet new console
+   17  sudo chmod 777 -R
+   18  sudo chmod * 777 -R
+   19  sudo chmod -R 777
+   20  cd ..
+   21  sudo chmod dotnet5sensehat/ 777 -R
+   22  sudo chmod 777 dotnet5sensehat/ -R
+   23  cd dotnet5sensehat/
+   24  dotnet add package System.Device.Gpio --source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet5/nuget/v3/index.json
+   25  dotnet add package Iot.Device.Bindings --source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet5/nuget/v3/index.json
+   26  dir
+   27  cd ..
+   28  git clone https://github.com/dotnet/iot.git
+   29  dir
+   30  cd iot/
+   31  dir
+   32  cd samples/
+   33  dir
+   34  cd ..
+   35  dir
+   36  cd src
+   37  dir
+   38  cd devices/
+   39  dir
+   40  cd SenseHat/
+   41  dir
+   42  dotnet build
+   43  dir
+   44  dotnet run
+   45  dotnet run --framework net50
+   46  cd /share/
+   47  dir
+   48  chm 777 iot/ -R
+   49  chmod 777 iot/ -R
+   50  cd /iot/src/devices/SenseHat
+   51  cd iot/src/devices/SenseHat
+   52  dotnet run --framework net5.0
+   53  dir
+   54  cd samples/
+   55  dir
+   56  dotnet build
+   57  dotnet run
+   58  cd /share/
+   59  cd dotnet5sensehat/
+   60  dotnet run
+   61  dotnet --info
+   62  dotnet run
+   63  cd /usr/share
+   64  dir
+   65  cd /
+   66  dir
+   67  cd share/
+   68  cd ~
+   69  sudo nano .bashrc
+   70  wget -O - https://raw.githubusercontent.com/pjgpetecodes/dotnet5pi/master/install.sh | sudo bash
+   71  sudo nano .bashrc
+   72  nano .bashrc
+   73  dir
+   74  ls -al
+   75  grep -q 'export DOTNET_ROOT=/opt/dotnet' ~/.bashrc
+   76  grep 'export DOTNET_ROOT=/opt/dotnet' ~/.bashrc
+   77  nano ~/.bashrc
+   78  'export DOTNET_ROOT=/opt/dotnet' >> ~/.bashrc
+   79  dotnet --info
+   80  sudo nano ~/.bashrc
+   81  nano ~/.bashrc
+   82  sudo reboot
+   83  nano ~/.bashrc
+   84  cd /share/
+   85  cd dotnet5sensehat/
+   86  dotnet run
+   87  nano ~/.bashrc
+   88  echo 'export DOTNET_ROOT=/opt/dotnet' >> ~/.bashrc
+   89  nano ~/.bashrc
+   90  cd ..
+   91  sudo nano testadd.sh
+   92  sudo chmod +x testadd.sh 
+   93  nano ~/.bashrc
+   94  dir
+   95  ./testadd.sh 
+   96  nano ~/.bashrc
+   97  sudo ./testadd.sh 
+   98  sudo nano ~/.bashrc
+   99  grep 'export DOTNET_ROOT=/opt/dotnet' ~/.bashrc
+  100  sudo grep 'export DOTNET_ROOT=/opt/dotnet' ~/.bashrc
+  101  sudo grep export ~/.bashrc
+  102  sudo grep 'export DOTNET_ROOT=/opt/dotnet' ~/.bashrc
+  103  sudo grep 'export DOTNET_ROOT=' ~/.bashrc
+  104  sudo nano ~/.bashrc
+  105  sudo grep 'export DOTNET_ROOT=' ~/.bashrc
+  106  sudo nano ~/.bashrc
+  107  wget -O - https://raw.githubusercontent.com/pjgpetecodes/dotnet5pi/master/install.sh | sudo bash
+  108  read -p "Do you wish to do perform a system update and upgrade first? " -n 1 -r
+  109  clear
+  110  wget -O - https://raw.githubusercontent.com/pjgpetecodes/dotnet5pi/master/install.sh | sudo bash
+  111  sudo nano ~/.bashrc
+  112  dir
+  113  nano testadd.sh 
+  114  sudo nano testadd.sh 
+  115  ./testadd.sh 
+  116  sudo nano testadd.sh 
+  117  sudo nano ~/.bashrc
+  118  sudo ./testadd.sh 
+  119  sudo nano testadd.sh 
+  120  sudo ./testadd.sh 
+  121  sudo nano ~/.bashrc
+  122  nano ~/.bashrc
+  123  sudo nano testadd.sh 
+  124  sudo ./testadd.sh 
+  125  sudo nano testadd.sh 
+  126  sudo ./testadd.sh 
+  127  nano ~/.bashrc
+  128  y
+  129  nano ~/.bashrc
+  130  wget -O - https://raw.githubusercontent.com/pjgpetecodes/dotnet5pi/master/install.sh | sudo bash
+  131  nano ~/.bashrc
+  132  cd dotnet5sensehat/
+  133  dotnet run
+  134  cd ..
+  135  dir
+  136  cd iot/
+  137  dir
+  138  cd src/
+  139  dir
+  140  cd devices/
+  141  dir
+  142  cd SenseHat/
+  143  dir
+  144  cd samples/
+  145  dir
+  146  dotnet run
+  147  cd /share/
+  148  dir
+  149  cd dotnet5sensehat/
+  150  dotnet run
+  151  sudo shutdown -h now
+  152  sudo reboot
+  153  cd /share
+  154  dir
+  155  mkdir robot1
+  156  cd robot1
+  157  dotnet new console
+  158  cd ..
+  159  cd iot/
+  160  cd src/
+  161  cd devices/
+  162  cd ServoMotor/
+  163  cd samples/
+  164  dir
+  165  dotnet run
+  166  rpi-config
+  167  sudo rpi-config
+  168  cd /share/iot
+  169  git pull
+  170  git stash
+  171  cd ..
+  172  rm -rf iot
+  173  git pull git@github.com:pjgpetecodes/iot.git
+  174  git clone git@github.com:pjgpetecodes/iot.git
+  175  git clone https://github.com/pjgpetecodes/iot.git
+  176  cd iot/
+  177  cd src
+  178  cd devices/
+  179  cd ServoMotor/
+  180  cd samples/
+  181  dotnet run
+  182  dir /sys/class/pwm
+  183  sudo dir /sys/class/pwm
+  184  sudo nano /boot/config.txt
+  185  sudo reboot
+  186  sudo dir /sys/class/pwm
+  187  cd /s
+  188  cd /share
+  189  cd iot
+  190  cd src
+  191  cd devices/
+  192  cd Servo
+  193  dir
+  194  cd ServoMotor/
+  195  cd samples/
+  196  dotnet run
+  197  nano program.cs
+  198  dir
+  199  nano Program.cs 
+  200  dotnet run
+  201  cd /share/
+  202  sudo chmod 777 iot/ -R
+  203  cd /share/iot/src/devices/ServoMotor/samples
+  204  dotnet run
+  205  history > file.txt
+  206  nano file.txt 
+  207  cd /share/
+  208  dur
+  209  dir
+  210  cd robot1/
+  211  dotnet add package Iot.Device.Bindings
+  212  dir
+  213  cd ..
+  214  chmod 777 robot1/ -R
+  215  cd robot1/
+  216  dotnet run
+  217  dir
+  218  dotnet run
+  219  history > install.txt
