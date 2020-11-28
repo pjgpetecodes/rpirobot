@@ -44,8 +44,8 @@ namespace robot1
             using ServoMotor servoMotor3 = new ServoMotor(
                 pwmChannel3,
                 180,
-                500,
-                2400);
+                900,
+                2100);
 
             servoMotor1.Start();
             servoMotor2.Start();
