@@ -12,13 +12,6 @@ namespace robot1
     class Program
     {
 
-        PwmChannel pwmChannel1;
-        ServoMotor servoMotor1;
-        PwmChannel pwmChannel2;
-        ServoMotor servoMotor2;
-        SoftwarePwmChannel pwmChannel3;
-        ServoMotor servoMotor3;
-
         private static HubConnection connection;
             
         static async Task Main(string[] args)
@@ -90,7 +83,9 @@ namespace robot1
             }
            
 
-            
+            //
+            // Keep the code running...
+            //
             while(true)
             {
                 
