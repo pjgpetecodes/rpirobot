@@ -30,4 +30,4 @@
 
 | Previous | Next |
 | -------- | ---- |
-| [< Step 3 - Install .NET 5](/03-install-dot-net-5.md) | [Step 5 - Flash LEDs >](05-flash-leds.md) |
+| [< Step 3 - Install .NET 5](/03-install-dot-net-5.md) | [Step 5 - Flash LEDs - Circuit >](05-flash-leds-circuit.md) |
