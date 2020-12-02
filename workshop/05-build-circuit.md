@@ -1,6 +1,5 @@
 # Build the Circuit #
 
-- Make sure you're in the rpirobot Project directory
 - 
 
 | Previous | Next |
