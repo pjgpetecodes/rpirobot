@@ -1,6 +1,8 @@
-# Raspberry Pi Robot Woprkshop! #
+# Raspberry Pi Robot Workshop! #
 
+Welcome to this workshop on creating a Robot Arm with Raspberry Pi, .NET 5, Blazor and SignalR!
 
+Get started below;
 
 
 | Previous | Next |
