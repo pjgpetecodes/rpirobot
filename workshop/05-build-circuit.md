@@ -1,6 +1,10 @@
 # Build the Circuit #
 
-- 
+- Build the following circuit;
+
+<p align="center">
+    <img src="images/05-build-circuit.png" width="500px" >
+</p>
 
 | Previous | Next |
 | -------- | ---- |
