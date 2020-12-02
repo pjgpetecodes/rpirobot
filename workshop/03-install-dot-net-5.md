@@ -1,6 +1,6 @@
 # Install .NET 5 #
 
-- Install .NET 5;
+- In an SSH Session, install .NET 5 by running the following command;
 
     ```
     wget -O - https://raw.githubusercontent.com/pjgpetecodes/dotnet5pi/master/install.sh | sudo bash
