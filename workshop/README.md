@@ -23,10 +23,10 @@ Finally we'll build out a simple Blazor and SignalR app to control our robot rem
 | 3 | [Install .NET 5](03-install-dot-net-5.md) | 
 | 4 | [Create Pi Robot Project](04-create-pi-robot-project.md) | 
 | 5 | [Build the Circuit - LED and Button](05-build-circuit-led-and-button.md) | 
-| 6 | [Flash LEDs](06-flash-leds.md) | 
+| 6 | [Flash LED](06-flash-led.md) | 
 | 7 | [Read a Button](07-read-button.md) | 
 | 8 | [Build the Circuit - Servos](08-build-circuit-Servos.md) | 
-| 9 | [Enable SSH](01-enable-ssh.md) | 
+| 9 | [Servo Demo](09-servo-demo.md) | 
 
 ## Shopping List
 

@@ -53,6 +53,7 @@
     - Creates a new GPIO Controller Object using the `Board` Pin Numbering Scheme.
     - Defines a Pin Number variable and assigns pin 10 to it, this is where we've connected our LED.
     - Defines a value for a delay between turning the LED on and off of 300ms
+    - Opens the LED Pin as an Output
     - Creates a loop.
     - In the loop;
         - The LED pin is set to a High Value, turning it on.

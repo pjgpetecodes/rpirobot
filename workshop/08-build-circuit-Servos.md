@@ -24,6 +24,12 @@
     <img src="images/07-build-circuit-driver.png" width="500px" >
 </p>
 
+| Raspberry Pi Pin | Servo Driver Board Pin |
+| - | - |
+| 25 | GND |
+| 1  | 12 |
+| 2  | 35 |
+| 3  | 13 |
 
 - Connect the Servos to the Servo Driver Board as follows;
 
@@ -31,6 +37,7 @@
     <img src="images/07-build-circuit-servos.png" width="500px" >
 </p>
 
+- Connect each Servo with it's orange or yellow wire connected to the C pin
 
 | Previous | Next |
 | -------- | ---- |
