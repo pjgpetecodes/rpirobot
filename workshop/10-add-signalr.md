@@ -3,27 +3,19 @@
 
 - Return to your SSH Session
 - Make sure you're in the `pirobot` directory
-- Add the IoT Device Bindings Nuget Package to your project with;
+- Add the SignalR Client Nuget Package to your project with;
 
     ```
-    dotnet add package Iot.Device.Bindings
+    dotnet add package Microsoft.AspNetCore.SignalR.Client
     ```
-
-- You can find more information about the IoT Device Bindings here;
-
-    https://github.com/dotnet/iot/tree/master/src/devices
 
 - Back in your project in VS Code
 - Add the following using statements to the list of using statements;
 
     ```cs
-    using System.Device.Pwm;
-    using Iot.Device.ServoMotor;
+    using Microsoft.AspNetCore.SignalR.Client;
+    using System.Net.Http;
     ```
-
-- Here we've added usings for two nuget libraries, PWM and also ServoMotor. You can find more information and examples here;
-
-    https://github.com/dotnet/iot/tree/master/src/devices/ServoMotor
 
 - Remove the existing code you have added in the `static void main` sub and add in the following code after the `Console.WriteLine("Hello World")` Line;
 
@@ -45,18 +37,49 @@
     servoMotor1.Start();
     servoMotor2.Start();
 
+    connection = new HubConnectionBuilder()
+                    .WithUrl("https://<PC IP Address>:5001/chathub",conf =>
+                    {
+                        conf.HttpMessageHandlerFactory = (x) => new HttpClientHandler
+                        {
+                            ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator,
+                        };                    
+                    })
+                    .Build();
+                
+    try
+    {
+        connection.On<string, string>("ReceiveMessage", (user, message) =>
+        {
+
+            if (user == "servo1")
+            {
+                MoveToAngle(servoMotor1, Int32.Parse(message));
+            }
+            else if (user == "servo2")
+            {
+                MoveToAngle(servoMotor2, Int32.Parse(message));
+            }
+            else if (user == "servo3")
+            {
+                MoveToAngle(servoMotor3, Int32.Parse(message));
+            }
+            Console.WriteLine($"{message} posted by: {user}");
+        });
+        
+        await connection.StartAsync();
+    }
+    catch (System.Exception)
+    {
+        
+        throw;
+    }
+
     try
     {
         while(true)
         {
-            MoveToAngle(servoMotor1, 50);
-            Thread.Sleep(2000);
-            MoveToAngle(servoMotor2, 50);
-            Thread.Sleep(2000);
-            MoveToAngle(servoMotor1, 100);
-            Thread.Sleep(2000);
-            MoveToAngle(servoMotor2, 100);
-            Thread.Sleep(2000);
+            
         }
     }
     finally
@@ -64,7 +87,6 @@
         servoMotor1.Stop();
         servoMotor2.Stop();
     }
-    
     ```
 
 - This section of code;
