@@ -64,6 +64,8 @@ For this workshop you'll need to buy some components before hand. The following 
 
 This workshop will appeal to all knowledge levels. A working knowledge of programming will help, but all the code will be shared on GitHub!
 
+## Let's get started!
+
 Get started below;
 
 
