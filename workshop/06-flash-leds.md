@@ -79,4 +79,4 @@
 
 | Previous | Next |
 | -------- | ---- |
-| [< Step 5 - Build the Circuit](/05-build-circuit.md) | [Step 7 - Read Button >](07-read-button.md) |
+| [< Step 5 - Build the Circuit](05-build-circuit-led-and-button.md) | [Step 7 - Read Button >](07-read-button.md) |

@@ -46,4 +46,4 @@
 
 | Previous | Next |
 | -------- | ---- |
-| [< Step 1 - Enable SSH](/01-enable-ssh.md) | [Step 3 - Install .NET 5 >](03-install-dot-net-5.md) |
+| [< Step 1 - Enable SSH](01-enable-ssh.md) | [Step 3 - Install .NET 5 >](03-install-dot-net-5.md) |

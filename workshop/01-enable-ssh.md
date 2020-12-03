@@ -12,4 +12,4 @@
 
 | Previous | Next |
 | -------- | ---- |
-| [< Introduction](/README.md) | [Step 2 - Create a Samba Share >](02-create-samba-share.md) |
+| [< Introduction](README.md) | [Step 2 - Create a Samba Share >](02-create-samba-share.md) |
