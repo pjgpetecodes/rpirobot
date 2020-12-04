@@ -27,8 +27,8 @@
 | Raspberry Pi Pin | Servo Driver Board Pin |
 | - | - |
 | 25 | GND |
-| 1  | 12 |
-| 2  | 35 |
+| 1  | 35 |
+| 2  | 12 |
 | 3  | 13 |
 
 - Connect the Servos to the Servo Driver Board as follows;
