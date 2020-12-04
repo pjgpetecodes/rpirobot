@@ -42,4 +42,4 @@
 
 | Previous | Next |
 | -------- | ---- |
-| [< Step 7 - Read Button ](07-read-button.md)| [Step 9 - Move Servos >](07-move-servos.md) |
+| [< Step 7 - Read Button ](07-read-button.md)| [Step 9 - Move Servos >](09-move-servos.md) |
