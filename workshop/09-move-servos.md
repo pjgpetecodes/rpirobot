@@ -49,13 +49,13 @@
     {
         while(true)
         {
+            MoveToAngle(servoMotor1, 20);
+            Thread.Sleep(2000);
+            MoveToAngle(servoMotor2, 70);
+            Thread.Sleep(2000);
             MoveToAngle(servoMotor1, 50);
             Thread.Sleep(2000);
-            MoveToAngle(servoMotor2, 50);
-            Thread.Sleep(2000);
-            MoveToAngle(servoMotor1, 100);
-            Thread.Sleep(2000);
-            MoveToAngle(servoMotor2, 100);
+            MoveToAngle(servoMotor2, 150);
             Thread.Sleep(2000);
         }
     }
