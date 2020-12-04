@@ -12,6 +12,7 @@
 - Add the following using statements to the list of using statements;
 
     ```cs
+    using System.Threading.Tasks;
     using Microsoft.AspNetCore.SignalR.Client;
     using System.Net.Http;
     ```
