@@ -116,4 +116,4 @@
 
 | Previous | Next |
 | -------- | ---- |
-| [< Step 8 - Build the Circuit - Servos](08-build-circuit-Servos.md) | [Step 10 - Add SignalR >](10-add-signalr.md) |
+| [< Step 8 - Build the Circuit - Servos](08-build-circuit-servos.md) | [Step 10 - Add SignalR >](10-add-signalr.md) |
