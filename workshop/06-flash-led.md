@@ -19,7 +19,7 @@
 - Add the following using statements to the top of the program.cs file to allow access to GPIO and Timers;
 
     ```cs
-    using System.Devices.Gpio;
+    using System.Device.Gpio;
     using System.Threading;
     ```
 
