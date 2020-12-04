@@ -12,6 +12,12 @@
     dotnet new console -o rpirobot
     ```
 
+- Set the permissions on the new directory so we can access it remotely;
+
+    ```
+    chmod 777 -R rpirobot
+    ```
+
 - Enter the Pi Robot directory;
 
     ```
