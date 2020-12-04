@@ -18,15 +18,20 @@ Finally we'll build out a simple Blazor and SignalR app to control our robot rem
 
 | Step | Link |
 | -------- | ---- |
-| 1 | [Enable SSH](01-enable-ssh.md) | 
-| 2 | [Create a Samba Share](02-create-samba-share.md) | 
-| 3 | [Install .NET 5](03-install-dot-net-5.md) | 
-| 4 | [Create Pi Robot Project](04-create-pi-robot-project.md) | 
-| 5 | [Build the Circuit - LED and Button](05-build-circuit-led-and-button.md) | 
-| 6 | [Flash LED](06-flash-led.md) | 
-| 7 | [Read a Button](07-read-button.md) | 
-| 8 | [Build the Circuit - Servos](08-build-circuit-Servos.md) | 
-| 9 | [Servo Demo](09-servo-demo.md) | 
+| 01 | [Enable SSH](01-enable-ssh.md) | 
+| 02 | [Create a Samba Share](02-create-samba-share.md) | 
+| 03 | [Install .NET 5](03-install-dot-net-5.md) | 
+| 04 | [Create Pi Robot Project](04-create-pi-robot-project.md) | 
+| 05 | [Build the Circuit - LED and Button](05-build-circuit-led-and-button.md) | 
+| 06 | [Flash LED](06-flash-led.md) | 
+| 07 | [Read a Button](07-read-button.md) | 
+| 08 | [Build the Circuit - Servos](08-build-circuit-Servos.md) | 
+| 09 | [Servo Demo](09-servo-demo.md) | 
+| 10 | [Add SignalR](10-add-signalr.md) | 
+| 11 | [Create Blazor App](11-create-blazor-app.md) | 
+| 12 | [Add Blazor Controls](12-add-blazor-controls.md) | 
+| 13 | [Add Control Code](13-add-control-code.md) | 
+| 14 | [Configure and Run](14-configure-and-run.md) | 
 
 ## Shopping List
 
@@ -82,7 +87,4 @@ This workshop will appeal to all knowledge levels. A working knowledge of progra
 
 Get started below;
 
-
-| Previous | Next |
-| -------- | ---- |
-| [Step 1 - Enable SSH >](01-enable-ssh.md) |
+[Step 1 - Enable SSH >](01-enable-ssh.md)

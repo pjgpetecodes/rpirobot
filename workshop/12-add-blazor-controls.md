@@ -58,4 +58,4 @@ Next, we can add the sliders to control the Servos.
 
 | Previous | Next |
 | -------- | ---- |
-| [< Step 11 - Create Blazor App](11-create-blazor-app.md) | [Step 13 - Add C# Code >](13-add-control-code.md) |
+| [< Step 11 - Create Blazor App](11-create-blazor-app.md) | [Step 13 - Add Control Code >](13-add-control-code.md) |

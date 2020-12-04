@@ -133,4 +133,4 @@ Finally, we can make sure we dispose of the SignalR Hub when the app stops
 
 | Previous | Next |
 | -------- | ---- |
-| [< Step 12 - Add Blazor Controls](12-add-blazor-controls.md) | [Step 14 - Configure and Run >](13-.md) |
+| [< Step 12 - Add Blazor Controls](12-add-blazor-controls.md) | [Step 14 - Configure and Run >](14-configure-and-run.md) |
