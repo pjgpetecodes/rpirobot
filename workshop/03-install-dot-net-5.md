@@ -1,6 +1,10 @@
 # Install .NET 5 #
 
-- Open an SSH Session using PUTtY if you don't already have one open.
+- On your local machine, if you don't already have it, download and install .NET 5 from;
+
+    https://dotnet.microsoft.com/download/dotnet/5.0
+
+- Open an SSH Session to your Raspberry pi using PUTtY if you don't already have one open.
 - Update your Pi Using;
 
     ```

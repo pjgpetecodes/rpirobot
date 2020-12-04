@@ -38,7 +38,8 @@
 </p>
 
 - Connect each Servo with it's orange or yellow wire connected to the C pin
+- Connect the Battery Pack to the Servo Driver Board
 
 | Previous | Next |
 | -------- | ---- |
-| [< Step 4 - Create Pi Robot Project](/04-create-pi-robot-project.md) | [Step 6 - Flash LEDs >](06-flash-leds.md) |
+| [< Step 7 - Read Button ](07-read-button.md)| [Step 9 - Move Servos >](07-move-servos.md) |

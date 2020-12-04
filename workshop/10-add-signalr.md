@@ -1,6 +1,5 @@
 # Move the Servos #
 
-
 - Return to your SSH Session
 - Make sure you're in the `pirobot` directory
 - Add the SignalR Client Nuget Package to your project with;
@@ -17,7 +16,19 @@
     using System.Net.Http;
     ```
 
-- Remove the existing code you have added in the `static void main` sub and add in the following code after the `Console.WriteLine("Hello World")` Line;
+- Add the following variable declaration above the `static void Main` sub which will house our SignalR Hub Connection;
+
+    ```cs
+    private static HubConnection connection;
+    ```
+
+- Change the `static void Main` declaration to be async, by replacing that line with;
+
+    ```cs
+    static async Task Main(string[] args)
+    ```
+
+- Remove the existing code you have added in the `static async Task Main` sub and add in the following code after the `Console.WriteLine("Hello World")` Line;
 
     ```cs
     using PwmChannel pwmChannel1 = PwmChannel.Create(0, 0, 50);
@@ -60,10 +71,6 @@
             {
                 MoveToAngle(servoMotor2, Int32.Parse(message));
             }
-            else if (user == "servo3")
-            {
-                MoveToAngle(servoMotor3, Int32.Parse(message));
-            }
             Console.WriteLine($"{message} posted by: {user}");
         });
         
@@ -90,52 +97,21 @@
     ```
 
 - This section of code;
-    - Create two `PwmCHannel` objects. These are Pulse Width Modulation Channels, one per Servo Motor we'll be driving.
-    - Each PWM Channel is created passing in;
-        - The Chip Number
-        - The PWM Channel
-        - The Frquency
-        - Optionally, the Duty Cycle Percentage
-    - We also then create two `ServoMotor` objects, passing in;
-        - The PWM Channel we'll be using
-        - The Maximum Angle of the Servo - We're using a 180 degree Servo, so we pass in 180 here
-        - The Minimum Pulse Width
-        - The Maximum Pulse Width
-            - Both the Min and Max Pulse Widths take a certain amount of trial an error to work out.
-            - These two paramaters will determine the rotation of teh servo and how far around to each end stop you can reach.
-    - We then Start both Servos.
-    - Next we create a loop.
-    - In the loop;
-        - Move the First Servo to an angle of 50 degrees
-        - Pause for 2 seconds
-        - Move the Second Servo to an angle of 50 degrees
-        - Pause for 2 seconds
-        - Move the First Servo to an angle of 100
-        - Pause for 2 seconds
-        - Move the Second Servo to an angle of 100
-    - A finally section then stops the servos before the program exits.
-
-- Add the following sub after the Main sub;
-
-    ```cs
-    static void MoveToAngle(ServoMotor Servo, int Angle) {
-        Servo.WriteAngle(Angle);            
-    }
-    ```
-
-- This sub simply takes which Servo we want to move and the Angle we'd like to move it to
-    - The `Servo.WriteAngle` sub can take either an angle or a fequency here. We're using an angle. 
-- Save the file
-- Run the application with;
-
-    ```
-    dotnet run
-    ```
-
-- Your Servos should now start moving!
+    - As before, creates the PWM and Servo Objects and initialises them with the same settings as previously an starts the Servos.
+    - Next we create a new SignalR HubConnectionBuilder
+    - Using the WithUrl extension method, we pass in to the HubConnectionBuilder, the URL of the SignalR service we'll be connecting to.
+        - We'll be returning to this later to populate the URL, once we've create it in our Blazor App.
+    - We also pass in a Configuration object to the HubConnectionBuilder. This configuration allows us ignore any certificate errors. I found that I wasn't able to connect without this.
+    - Next we hook up an event handler to the `connection.On` `ReceiveMessage` event;
+        - This event takes any number of parameters. We'll be sending a "User" and a "Message" from the Blazor App.
+    - We use the `user` parameter to determine which servo we want to control.
+    - We use the `message` parameter to set the angle we'd like to move the servo to.
+    - We then start the SignalR connection.
+    - Next, we simply loop forever, meaning we can handle the `connection.On` event whenever it occurrs.
+    - Finally, we stop the servos at the end of the application.
 
 - Exit the program with ctrl+c
 
 | Previous | Next |
 | -------- | ---- |
-| [< Step 6 - Flash LED](05-build-circuit-led-and-button.md) | [Step 7 - Read Button >](07-read-button.md) |
+| [< Step 9 - Move Servos](09-move-servos.md) | [Step 11 - Create Blazor App >](11-create-blazor-app.md) |

@@ -116,4 +116,4 @@
 
 | Previous | Next |
 | -------- | ---- |
-| [< Step 6 - Flash LED](05-build-circuit-led-and-button.md) | [Step 7 - Read Button >](07-read-button.md) |
+| [< Step 8 - Build the Circuit - Servos](08-build-circuit-Servos.md) | [Step 10 - Add SignalR >](10-add-signalr.md) |
