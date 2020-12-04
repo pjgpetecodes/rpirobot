@@ -63,4 +63,4 @@
 
 | Previous | Next |
 | -------- | ---- |
-| [< Step 6 - Flash LED](05-build-circuit-led-and-button.md) | [Step 7 - Read Button >](07-read-button.md) |
+| [< Step 6 - Flash LED](05-build-circuit-led-and-button.md) | [Step 8 - Build Circuit - Servos >](08-build-circuit-servos.md) |
