@@ -3,12 +3,18 @@ using System.Device.Gpio;
 using System.Threading;
 using System.Device.Pwm;
 using Iot.Device.ServoMotor;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.SignalR.Client;
+using System.Net.Http;
 
 namespace robot_firmware
 {
     class Program
     {
-        static void Main(string[] args)
+
+        private static HubConnection connection;
+
+        static async Task Main(string[] args)
         {
 
             Console.WriteLine("Hello World!");
@@ -30,25 +36,52 @@ namespace robot_firmware
             servoMotor1.Start();
             servoMotor2.Start();
 
-            try
-            {
-                while(true)
+            connection = new HubConnectionBuilder()
+                .WithUrl("https://<PC IP Address>:5001/chathub",conf =>
                 {
-                    MoveToAngle(servoMotor1, 70);
-                    Thread.Sleep(2000);
-                    MoveToAngle(servoMotor2, 20);
-                    Thread.Sleep(2000);
-                    MoveToAngle(servoMotor1, 150);
-                    Thread.Sleep(2000);
-                    MoveToAngle(servoMotor2, 50);
-                    Thread.Sleep(2000);
+                    conf.HttpMessageHandlerFactory = (x) => new HttpClientHandler
+                    {
+                        ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator,
+                    };                    
+                })
+                .Build();
+            
+                try
+                {
+                    connection.On<string, string>("ReceiveMessage", (user, message) =>
+                    {
+
+                        if (user == "servo1")
+                        {
+                            MoveToAngle(servoMotor1, Int32.Parse(message));
+                        }
+                        else if (user == "servo2")
+                        {
+                            MoveToAngle(servoMotor2, Int32.Parse(message));
+                        }
+                        Console.WriteLine($"{message} posted by: {user}");
+                    });
+                    
+                    await connection.StartAsync();
                 }
-            }
-            finally
-            {
-                servoMotor1.Stop();
-                servoMotor2.Stop();
-            }
+                catch (System.Exception)
+                {
+                    
+                    throw;
+                }
+
+                try
+                {
+                    while(true)
+                    {
+                        
+                    }
+                }
+                finally
+                {
+                    servoMotor1.Stop();
+                    servoMotor2.Stop();
+                }
 
         }
 
