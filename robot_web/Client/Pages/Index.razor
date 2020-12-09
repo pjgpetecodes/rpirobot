@@ -1,7 +1,19 @@
 ﻿@page "/"
 
-<h1>Hello, world!</h1>
+@using Microsoft.AspNetCore.SignalR.Client
+@inject NavigationManager NavigationManager
+@implements IAsyncDisposable
 
-Welcome to your new app.
+<div class="form-group row">
+    <label>
+        Servo 1 (@servo1):
+    </label>
+    <MatSlider @bind-Value="@servo1" Immediate="true" Step="1" EnableStep="true" ValueMin="0" ValueMax="180" Markers="true" Pin="true" TValue="int" Discrete="true"></MatSlider>
+</div>
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+<div class="form-group row">
+    <label>
+        Servo 2 (@servo2):
+    </label>
+    <MatSlider @bind-Value="@servo2" Immediate="true" Step="1" EnableStep="true" ValueMin="0" ValueMax="180" Markers="true" Pin="true" TValue="int" Discrete="true"></MatSlider>
+</div>
