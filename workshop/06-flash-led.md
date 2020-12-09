@@ -1,15 +1,15 @@
 # Flash LEDs #
 
-- Make sure you're in the rpirobot Project directory
+- Make sure you're in the robot_firmware Project directory
 - Install the `System.Device.Gpio` Nuget Package
 
     ```
     dotnet add package System.Device.Gpio
     ```
 
-- Back on your machine, open the new rpirobot project in code.
+- Back on your machine, open the new robot_firmware project in code.
 - For Windows;
-    - Navigate to the rpirobot folder via `\\<Pi Host Name>\share\rpirobot`
+    - Navigate to the robot_firmware folder via `\\<Pi Host Name>\share\robot_firmware`
     - Open the folder by right clicking in the empty space near the files and click "Open with Code"
 
     <p align="center">
@@ -63,7 +63,7 @@
     - A finally section then closes the LED pin freeing any resources before the program exits.
 
 - Save the file
-- In an SSH Session, make sure you're in the `pirobot` directory
+- In an SSH Session, make sure you're in the `robot_firmware` directory
 - Run the application with;
 
     ```

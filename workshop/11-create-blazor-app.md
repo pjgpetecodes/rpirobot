@@ -3,10 +3,10 @@
 - On your local machine, open and command prompt, navigate to your root directory and create a Hosted Blazor WASM app with;
 
     ```
-    dotnet new blazorwasm --hosted -o robot-web
+    dotnet new blazorwasm --hosted -o robot_web
     ```
 
-- Enter the `robot-web` directory.
+- Enter the `robot_web` directory.
 - Add a the SignalR Client nuget package with;
 
     ```
@@ -60,7 +60,7 @@
 - Use the following to start the app;
 
     ```
-    dotnet run --project Server/robot-web.Server.csproj
+    dotnet run --project Server/robot_web.Server.csproj
     ```
 
 - You can then open a browser window and navigate to;

@@ -9,19 +9,19 @@
 - Create Pi Robot Project;
 
     ```
-    dotnet new console -o robot-firmware
+    dotnet new console -o robot_firmware
     ```
 
 - Set the permissions on the new directory so we can access it remotely;
 
     ```
-    chmod 777 -R robot-firmware
+    chmod 777 -R robot_firmware
     ```
 
 - Enter the Pi Robot directory;
 
     ```
-    cd robot-firmware
+    cd robot_firmware
     ```
 
 - Test the project runs

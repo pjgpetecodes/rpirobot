@@ -46,7 +46,7 @@
     - A finally section then closes the LED pin freeing any resources before the program exits.
 
 - Save the file
-- In an SSH Session, make sure you're in the `pirobot` directory
+- In an SSH Session, make sure you're in the `robot_firmware` directory
 - Run the application with;
 
     ```

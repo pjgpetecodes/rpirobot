@@ -18,13 +18,13 @@ We now need to add the necessary sections of code to allow us to use MatBlazor
 
 We now need to enable access to the server app from any machine on our network...
 
-- Open the `Server\launchSettings.json` file.
-- Change the `applicationUrl` line within the `robot-web.Server` section on line 24 to the following;
+- Open the `Server\Properties\launchSettings.json` file.
+- Change the `applicationUrl` line within the `robot_web.Server` section on line 24 to the following;
 
     ```json
     "applicationUrl": "https://0.0.0.0:5001;http://0.0.0.0:5000",
     ```
-We can now add the markup and code to create a SignalR Hub, a couple of MatBlazor Slide.
+We can now add the markup and code to create a SignalR Hub, a couple of MatBlazor Sliders.
 
 - Open the `Client\Pages\Index.razor` file.
 - Remove everything but the `@page "/"` line.

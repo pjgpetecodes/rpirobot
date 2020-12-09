@@ -1,7 +1,7 @@
 # Move the Servos #
 
 - Return to your SSH Session
-- Make sure you're in the `pirobot` directory
+- Make sure you're in the `robot_firmware` directory
 - Add the SignalR Client Nuget Package to your project with;
 
     ```

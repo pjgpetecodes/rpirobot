@@ -16,7 +16,7 @@ The first thing we need to do is get the IP Address of our machine.
     <img src="images/14-ip-address.png" width="500px" >
 </p>
 
-- Open the rpirobot project on the Raspberry Pi.
+- Open the robot_firmware project on the Raspberry Pi.
 - Replace the `<PC IP Address>` section in the `Program.cs` file with the PC Ip Address. For instance;
 
     ```cs
