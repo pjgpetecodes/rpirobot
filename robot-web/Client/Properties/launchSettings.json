@@ -16,7 +16,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "rpirobot-control": {
+    "robot-web": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,

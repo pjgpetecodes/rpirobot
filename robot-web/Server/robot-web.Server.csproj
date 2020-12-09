@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>rpirobot-control.Server</RootNamespace>
+    <RootNamespace>robot-web.Server</RootNamespace>
     <AssemblyName>$(AssemblyName.Replace(' ', '_'))</AssemblyName>
   </PropertyGroup>
 
@@ -11,8 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Client\rpirobot-control.Client.csproj" />
-    <ProjectReference Include="..\Shared\rpirobot-control.Shared.csproj" />
+    <ProjectReference Include="..\Client\robot-web.Client.csproj" />
+    <ProjectReference Include="..\Shared\robot-web.Shared.csproj" />
   </ItemGroup>
 
 

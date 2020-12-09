@@ -3,10 +3,10 @@
 - On your local machine, open and command prompt, navigate to your root directory and create a Hosted Blazor WASM app with;
 
     ```
-    dotnet new blazorwasm --hosted -o rpirobot-control
+    dotnet new blazorwasm --hosted -o robot-web
     ```
 
-- Enter the `rpirobot-control` directory.
+- Enter the `robot-web` directory.
 - Add a the SignalR Client nuget package with;
 
     ```
@@ -60,7 +60,7 @@
 - Use the following to start the app;
 
     ```
-    dotnet run --project Server/rpirobot-control.Server.csproj
+    dotnet run --project Server/robot-web.Server.csproj
     ```
 
 - You can then open a browser window and navigate to;

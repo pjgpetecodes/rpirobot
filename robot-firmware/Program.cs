@@ -7,7 +7,7 @@ using Iot.Device.ServoMotor;
 using Microsoft.AspNetCore.SignalR.Client;
 using System.Net.Http;
 
-namespace robot1
+namespace robot-firmware
 {
     class Program
     {

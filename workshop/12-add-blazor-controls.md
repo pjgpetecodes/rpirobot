@@ -19,7 +19,7 @@ We now need to add the necessary sections of code to allow us to use MatBlazor
 We now need to enable access to the server app from any machine on our network...
 
 - Open the `Server\launchSettings.json` file.
-- Change the `applicationUrl` line within the `rpirobot-control.Server` section on line 24 to the following;
+- Change the `applicationUrl` line within the `robot-web.Server` section on line 24 to the following;
 
     ```json
     "applicationUrl": "https://0.0.0.0:5001;http://0.0.0.0:5000",
