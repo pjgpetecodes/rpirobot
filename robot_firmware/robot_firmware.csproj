@@ -13,4 +13,8 @@
     
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="System.Device.Gpio" Version="1.2.0" />
+  </ItemGroup>
+
 </Project>
