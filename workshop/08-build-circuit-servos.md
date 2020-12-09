@@ -1,4 +1,4 @@
-# Building the Circuit - 1 - LED and Button #
+# Building the Circuit - 2 - Servos #
 
 ## Finished Circuit
 
