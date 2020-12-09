@@ -50,6 +50,7 @@ We now need to add the SignalR service to our Server App.
 
 Now we can create the C# Code for our App.
 
+- Open the `Client\Pages\Index.razor` File
 - Create a `@code` section at the bottom of the file;
 
     ```cs
@@ -122,7 +123,7 @@ Next we can create the SignalR Hub and set the Uri that services will connect to
 
 Finally, we can make sure we dispose of the SignalR Hub when the app stops
 
-- Add teh following section of code below the `IsConnected` line;
+- Add the following section of code below the `IsConnected` line;
 
     ```cs
     public async ValueTask DisposeAsync()

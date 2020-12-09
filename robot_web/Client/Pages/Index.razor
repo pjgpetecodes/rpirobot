@@ -17,3 +17,50 @@
     </label>
     <MatSlider @bind-Value="@servo2" Immediate="true" Step="1" EnableStep="true" ValueMin="0" ValueMax="180" Markers="true" Pin="true" TValue="int" Discrete="true"></MatSlider>
 </div>
+
+@code {
+    private int _servo1 = 90;
+    private int _servo2 = 90;
+
+    private HubConnection hubConnection;
+
+    public int servo1
+    {
+        get => _servo1;
+        set
+        {
+            _servo1 = value;
+            this.StateHasChanged();
+            hubConnection.SendAsync("SendMessage", "servo1", _servo1.ToString());
+        }
+    }
+
+    public int servo2
+    {
+        get => _servo2;
+        set
+        {
+            _servo2 = value;
+            this.StateHasChanged();
+            hubConnection.SendAsync("SendMessage", "servo2", _servo2.ToString());
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        hubConnection = new HubConnectionBuilder()
+            .WithUrl(NavigationManager.ToAbsoluteUri("/chathub"))
+            .Build();
+
+        await hubConnection.StartAsync();
+    }
+
+    public bool IsConnected =>
+        hubConnection.State == HubConnectionState.Connected;
+
+    public async ValueTask DisposeAsync()
+    {
+        await hubConnection.DisposeAsync();
+    }
+
+}
