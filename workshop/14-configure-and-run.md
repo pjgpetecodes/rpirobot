@@ -1,4 +1,4 @@
-# Add Blazor C# Control Code #
+# Configure and Run #
 
 We now have the building blocks in place to make our robot arm move! (Can we get a Yipee!).
 
