@@ -50,7 +50,7 @@ We now need to add the SignalR service to our Server App.
 
 Now we can create the C# Code for our App.
 
-- Open the Client\Pages\Index.razor File
+- Open the `Client\Pages\Index.razor` File
 - Create a `@code` section at the bottom of the file;
 
     ```cs
