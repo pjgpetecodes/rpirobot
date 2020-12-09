@@ -29,7 +29,7 @@ We need to create the SignalR Hub to our Server Project.
 
 We now need to add the SignalR service to our Server App.
 
-- Open the `Server\Startup.cs" file.
+- Open the `Server\Startup.cs` file.
 - Add the following to the usings section;
 
     ```cs
