@@ -29,7 +29,7 @@ We need to create the SignalR Hub to our Server Project.
 
 We now need to add the SignalR service to our Server App.
 
-- Open the `Server\Startup.cs" file.
+- Open the `Server\Startup.cs` file.
 - Add the following to the usings section;
 
     ```cs
@@ -50,6 +50,7 @@ We now need to add the SignalR service to our Server App.
 
 Now we can create the C# Code for our App.
 
+- Open the `Client\Pages\Index.razor` File
 - Create a `@code` section at the bottom of the file;
 
     ```cs
