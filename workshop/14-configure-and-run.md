@@ -42,4 +42,4 @@ We can now see if it all works...
 
 | Previous | Next |
 | -------- | ---- |
-| [< Step 13 - Add Control Code](13-add-control-code.md) | | [Return to the Start >](README.md) |
+| [< Step 13 - Add Control Code](13-add-control-code.md) | [Return to the Start >](README.md) |
