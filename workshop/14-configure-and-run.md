@@ -1,4 +1,4 @@
-# Add Blazor C# Control Code #
+# Configure and Run #
 
 We now have the building blocks in place to make our robot arm move! (Can we get a Yipee!).
 
@@ -40,8 +40,6 @@ We can now see if it all works...
     <img src="images/14-firewall-warning.png" width="500px" >
 </p>
 
-
-
 | Previous | Next |
 | -------- | ---- |
-| x | [Return to the Start >](README.md) |
+| [< Step 13 - Add Control Code](13-add-control-code.md) | | [Return to the Start >](README.md) |
