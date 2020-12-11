@@ -26,7 +26,7 @@ Finally we'll build out a simple Blazor and SignalR app to control our robot rem
 | 06 | [Flash LED](06-flash-led.md) | 
 | 07 | [Read a Button](07-read-button.md) | 
 | 08 | [Build the Circuit - Servos](08-build-circuit-servos.md) | 
-| 09 | [Servo Demo](09-servo-demo.md) | 
+| 09 | [Servo Demo](09-move-servos.md) | 
 | 10 | [Add SignalR](10-add-signalr.md) | 
 | 11 | [Create Blazor App](11-create-blazor-app.md) | 
 | 12 | [Add Blazor Controls](12-add-blazor-controls.md) | 
