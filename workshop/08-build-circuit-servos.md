@@ -24,12 +24,12 @@
     <img src="images/07-build-circuit-driver.png" width="500px" >
 </p>
 
-| Raspberry Pi Pin | Servo Driver Board Pin |
+| Servo Driver Board Pin | Raspberry Pi Pin |
 | - | - |
-| 25 | GND |
-| 1  | 35 |
-| 2  | 12 |
-| 3  | 13 |
+| GND | 25 |
+| 1   | 35 |
+| 2   | 12 |
+| 3   | 13 |
 
 - Connect the Servos to the Servo Driver Board as follows;
 
