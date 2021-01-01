@@ -12,7 +12,29 @@
 - You can find more information about the IoT Device Bindings here;
 
     https://github.com/dotnet/iot/tree/master/src/devices
+    
+- Enabling Hardware PWM on Raspberry Pi
+    Edit the /boot/config.txt file and add the dtoverlay line in the file. You need root privileges for this:
+    
+    ```
+    sudo nano /boot/config.txt
+    ```
+    | PWM | GPIO | Function | Alt | dtoverlay |
+| --- | --- | --- | --- | --- |
+| PWM0 | 12 | 4 | Alt0 | dtoverlay=pwm,pin=12,func=4 |
+| PWM0 | 18 | 2 | Alt5 | dtoverlay=pwm,pin=18,func=2 |
+| PWM1 | 13 | 4 | Alt0 | dtoverlay=pwm,pin=13,func=4 |
+| PWM1 | 19 | 2 | Alt5 | dtoverlay=pwm,pin=19,func=2 |
+Save the file with `ctrl + x` then `Y` then `enter`
 
+Then reboot:
+
+```bash
+sudo reboot
+```
+
+You are all setup, the basic example should now work with the PWM and channel you have selected.
+   
 - Back in your project in VS Code
 - Add the following using statements to the list of using statements;
 
