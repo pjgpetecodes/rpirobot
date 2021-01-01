@@ -20,18 +20,18 @@
     sudo nano /boot/config.txt
     ```
     | PWM | GPIO | Function | Alt | dtoverlay |
-| --- | --- | --- | --- | --- |
-| PWM0 | 12 | 4 | Alt0 | dtoverlay=pwm,pin=12,func=4 |
-| PWM0 | 18 | 2 | Alt5 | dtoverlay=pwm,pin=18,func=2 |
-| PWM1 | 13 | 4 | Alt0 | dtoverlay=pwm,pin=13,func=4 |
-| PWM1 | 19 | 2 | Alt5 | dtoverlay=pwm,pin=19,func=2 |
-Save the file with `ctrl + x` then `Y` then `enter`
+    | --- | --- | --- | --- | --- |
+    | PWM0 | 12 | 4 | Alt0 | dtoverlay=pwm,pin=12,func=4 |
+    | PWM0 | 18 | 2 | Alt5 | dtoverlay=pwm,pin=18,func=2 |
+    | PWM1 | 13 | 4 | Alt0 | dtoverlay=pwm,pin=13,func=4 |
+    | PWM1 | 19 | 2 | Alt5 | dtoverlay=pwm,pin=19,func=2 |
+    Save the file with `ctrl + x` then `Y` then `enter`
 
-Then reboot:
+    Then reboot:
 
-```bash
-sudo reboot
-```
+    ```bash
+    sudo reboot
+    ```
 
 You are all setup, the basic example should now work with the PWM and channel you have selected.
    
