@@ -80,7 +80,7 @@
         - The Minimum Pulse Width
         - The Maximum Pulse Width
             - Both the Min and Max Pulse Widths take a certain amount of trial an error to work out.
-            - These two paramaters will determine the rotation of teh servo and how far around to each end stop you can reach.
+            - These two paramaters will determine the rotation of the servo and how far around to each end stop you can reach.
     - We then Start both Servos.
     - Next we create a loop.
     - In the loop;
