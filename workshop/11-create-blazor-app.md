@@ -1,6 +1,6 @@
 # Create the Blazor App #
 
-- On your local machine, open and command prompt, navigate to your root directory and create a Hosted Blazor WASM app with;
+- On your local machine, open a command prompt, navigate to your root directory and create a Hosted Blazor WASM app with;
 
     ```
     dotnet new blazorwasm --hosted -o robot_web
