@@ -6,8 +6,8 @@ You can watch a couple of recordings of a run through of how the software works 
 
 #FestiveTechCalendar - Building a Raspberry Pi Robot Arm with .NET 5, Blazor and SignalR:
 
-http://bit.ly/dotnet5robotfestivevideo
-http://bit.ly/dotnet5robotdddvideo
+- http://bit.ly/dotnet5robotfestivevideo
+- http://bit.ly/dotnet5robotdddvideo
 
 ## robot_firmware
 
