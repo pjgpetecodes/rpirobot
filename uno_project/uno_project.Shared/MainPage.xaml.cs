@@ -26,5 +26,20 @@ namespace uno_project
         {
             this.InitializeComponent();
         }
+
+        private void servo1_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+        {
+            Console.WriteLine(e.NewValue);
+        }
+
+        private void servo2_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+        {
+            Console.WriteLine(e.NewValue);
+        }
+
+        private void servo3_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+        {
+            Console.WriteLine(e.NewValue);
+        }
     }
 }
