@@ -1,0 +1,7 @@
+<Application
+    x:Class="uno_project.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:uno_project">
+
+</Application>
