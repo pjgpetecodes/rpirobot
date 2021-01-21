@@ -13,13 +13,13 @@
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" TextDecorations="Underline" Margin="0,0,0,38">Raspberry Pi Robot Arm Control</TextBlock>
 
             <TextBlock HorizontalAlignment="Stretch" Margin="20,0,20,20">Servo 1:</TextBlock>
-            <Slider Name="servo1" HorizontalAlignment="Stretch" Margin="20,0,20,20" Maximum="180" LargeChange="10" TickFrequency="10" ValueChanged="servo1_ValueChanged"></Slider>
+            <Slider Name="servo1" HorizontalAlignment="Stretch" Margin="20,0,20,20" Maximum="180" LargeChange="10" TickFrequency="10" ValueChanged="servo1_ValueChanged" Value="110"></Slider>
 
             <TextBlock HorizontalAlignment="Stretch" Margin="20,0,20,20">Servo 2:</TextBlock>
-            <Slider Name="servo1" HorizontalAlignment="Stretch" Margin="20,0,20,20" Maximum="180" LargeChange="10" TickFrequency="10" ValueChanged="servo2_ValueChanged"></Slider>
+            <Slider Name="servo2" HorizontalAlignment="Stretch" Margin="20,0,20,20" Maximum="180" LargeChange="10" TickFrequency="10" ValueChanged="servo2_ValueChanged" Value="70"></Slider>
 
             <TextBlock HorizontalAlignment="Stretch" Margin="20,0,20,20">Servo 3:</TextBlock>
-            <Slider Name="servo1" HorizontalAlignment="Stretch" Margin="20,0,20,20" Maximum="180" LargeChange="10" TickFrequency="10" ValueChanged="servo3_ValueChanged"></Slider>
+            <Slider Name="servo3" HorizontalAlignment="Stretch" Margin="20,0,20,20" Maximum="180" LargeChange="10" TickFrequency="10" ValueChanged="servo3_ValueChanged"></Slider>
         </StackPanel>
 
 
