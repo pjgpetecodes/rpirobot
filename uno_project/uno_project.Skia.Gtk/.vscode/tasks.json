@@ -86,6 +86,19 @@
             
         },
         {
+            "label": "RaspberryDeployLocal",
+            "type": "shell",
+            "dependsOn": "RaspberryPublishWSL",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "windows": {
+                "command": "rsync -rvuz --rsh=\"c:\\cwrsync\\ssh -i \\home\\pete_\\.ssh\\rpi4\" --chmod=700 bin/linux-arm/publish/ pi@192.168.1.91:share/${workspaceFolderBasename}/"
+            },
+            "problemMatcher": []
+        },
+        {
             "label": "RaspberryDeployWSLBat",
             "type": "shell",
             "dependsOn": "RaspberryPublishWSL",
