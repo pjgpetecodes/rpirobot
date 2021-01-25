@@ -24,10 +24,10 @@
             "processId": "${command:pickProcess}"
         },
         {
-            "name": ".NET Core Launch (remote console)",
+            "name": ".NET Core Launch (remote)",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "RaspberryDeployWSL",
+            "preLaunchTask": "RaspberryPiDeploy",
             "program": "dotnet",
             "args": ["/home/pi/share/${workspaceFolderBasename}/${workspaceFolderBasename}.dll"],
             "cwd": "/home/pi/share/${workspaceFolderBasename}",
@@ -35,10 +35,8 @@
             "console": "internalConsole",
             "pipeTransport": {
                 "pipeCwd": "${workspaceFolder}",
-                "pipeProgram": "C:\\Program Files\\PuTTY\\plink.exe",
+                "pipeProgram": "ssh",
                 "pipeArgs": [
-                    "-pw",
-                    "raspberry",
                     "root@rpi4"
                 ],
                 "debuggerPath": "/home/pi/vsdbg/vsdbg"

@@ -39,23 +39,7 @@
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "RaspberryPublish",
-            "command": "sh",
-            "type": "shell",
-            "dependsOn": "build",
-            "windows": {
-                "command": "cmd",
-                "args": [
-                    "/c",
-                    "\"dotnet publish -r linux-arm -o bin\\linux-arm\\publish\"",
-                    "|",
-                    "\"scp -r ${workspaceFolder}/bin/linux-arm/publish/ pi@rpi4:/home/pi/share/${workspaceFolderBasename}\""
-                ],
-                "problemMatcher": []
-            }
-        },
-        {
-            "label": "RaspberryPublishWSL",
+            "label": "RaspberryPiPublish",
             "command": "sh",
             "type": "shell",
             "dependsOn": "build",
@@ -70,54 +54,17 @@
             
         },
         {
-            "label": "RaspberryDeployWSL",
+            "label": "RaspberryPiDeploy",
             "type": "shell",
-            "dependsOn": "RaspberryPublishWSL",
-            "presentation": {
-                "reveal": "always",
-                "panel": "new"
-            },
-            "command": "bash",
-                "args": [
-                    "-c",
-                    "'sshpass -p \"raspberry\" rsync -rvuz $(wslpath '\"'${workspaceFolder}'\"')/bin/linux-arm/publish/ pi@192.168.1.91:share/${workspaceFolderBasename}/'"
-                ],
-                "problemMatcher": []
-            
-        },
-        {
-            "label": "RaspberryDeployLocal",
-            "type": "shell",
-            "dependsOn": "RaspberryPublishWSL",
+            "dependsOn": "RaspberryPiPublish",
             "presentation": {
                 "reveal": "always",
                 "panel": "new"
             },
             "windows": {
-                "command": "rsync -rvuz --rsh=\"c:\\cwrsync\\ssh -i \\home\\pete_\\.ssh\\rpi4\" --chmod=700 bin/linux-arm/publish/ pi@192.168.1.91:share/${workspaceFolderBasename}/"
+                "command": "rsync -rvuz --rsh=\"c:\\cwrsync\\ssh\" --chmod=700 bin/linux-arm/publish/ pi@rpi4:share/${workspaceFolderBasename}/"
             },
             "problemMatcher": []
-        },
-        {
-            "label": "RaspberryDeployWSLBat",
-            "type": "shell",
-            "dependsOn": "RaspberryPublishWSL",
-            "presentation": {
-                "reveal": "always",
-                "panel": "new"
-            },
-            "options": {
-                "cwd": "${workspaceFolder}"
-            },
-            "windows": {
-                "command": "${cwd}\\publish3.bat"
-            },
-            "problemMatcher": []
-        },
-        {
-            "label": "echo",
-            "type": "shell",
-            "command": "echo 'sshpass -p \"raspberry\" rsync -rvuz $(wslpath '\"'${workspaceFolder}'\"')/bin/linux-arm/publish/ pi@192.168.1.91:share/${workspaceFolderBasename}/'"
         }
     ]
 }
