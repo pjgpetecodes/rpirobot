@@ -22,6 +22,12 @@
     wget -O - https://raw.githubusercontent.com/pjgpetecodes/dotnet5pi/master/install.sh | sudo bash
     ```
 
+- Reboot your pi
+
+    ```
+    sudo reboot
+    ```
+
 <p align="center">
     <img src="images/03-install-dot-net-5.gif" width="500px" >
 </p>
