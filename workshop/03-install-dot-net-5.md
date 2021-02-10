@@ -6,7 +6,7 @@
     
 - Download and install Visual Studio Code if you don't already have it;
 
-https://code.visualstudio.com/
+    https://code.visualstudio.com/
 
 - Open an SSH Session to your Raspberry pi using PUTtY if you don't already have one open.
 - Update your Pi Using;
