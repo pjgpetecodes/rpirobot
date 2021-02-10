@@ -15,6 +15,12 @@
     sudo mkdir -m 1777 /home/pi/share
     ```
 
+- Edit the Samba Setup File
+
+    ```
+    sudo nano /etc/samba/smb.conf
+    ```
+
 - Add the following to the bottom of the file and save;
 
     ```    
