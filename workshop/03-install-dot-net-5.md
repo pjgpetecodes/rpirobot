@@ -3,6 +3,10 @@
 - On your local machine, if you don't already have it, download and install .NET 5 from;
 
     https://dotnet.microsoft.com/download/dotnet/5.0
+    
+- Download and install Visual Studio Code if you don't already have it;
+
+https://code.visualstudio.com/
 
 - Open an SSH Session to your Raspberry pi using PUTtY if you don't already have one open.
 - Update your Pi Using;
