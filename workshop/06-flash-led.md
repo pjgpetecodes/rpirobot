@@ -78,6 +78,19 @@
 
 - Exit the program with ctrl+c
 
+Note:
+If using a raspberry Pi 3 you may have an issue with selecting the correct driver, the following will force the raspberry Pi 3 driver.
+Place afer `Console.WriteLine("Hello World")` and overwrite `GpioController controller = new GpioController(PinNumberingScheme.Board);`
+```cs
+    var assembly = typeof(GpioDriver).Assembly;
+    var driverType = assembly.GetType("System.Device.Gpio.Drivers.RaspberryPi3LinuxDriver");
+    var ctor = driverType.GetConstructor(new Type[]{});
+    var driver = ctor.Invoke(null) as GpioDriver;
+    GpioController controller = new GpioController(PinNumberingScheme.Board, driver);
+```
+This code snippet will be required in the next sections.
+
+
 | Previous | Next |
 | -------- | ---- |
 | [< Step 5 - Build the Circuit](05-build-circuit-led-and-button.md) | [Step 7 - Read Button >](07-read-button.md) |
