@@ -92,7 +92,7 @@ You can work around this issue by replacing the following line;
 GpioController controller = new GpioController(PinNumberingScheme.Board);
 ```
 
-With;
+With the following section of code;
 
 ```
 var assembly = typeof(GpioDriver).Assembly;
