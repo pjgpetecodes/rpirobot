@@ -72,6 +72,38 @@
 
 - You should then see the LED flashing on and off
 
+---
+
+## Note:
+
+If you receive the following error;
+
+```
+Unhandled exception. System.PlatformNotSupportedException
+```
+
+Then it's possible you're using something like a Pi 3A+ (thanks Eoin Ward). There’s currently an incompatibility with the Raspberry Pi 3A+ which has a different BCM Controller Chip.
+
+This causes and error to be displayed when you try to control the Pi GPIO
+
+You can work around this issue by replacing the following line;
+
+```
+GpioController controller = new GpioController(PinNumberingScheme.Board);
+```
+
+With;
+
+```
+var assembly = typeof(GpioDriver).Assembly;
+var driverType = assembly.GetType("System.Device.Gpio.Drivers.RaspberryPi3LinuxDriver");
+var ctor = driverType.GetConstructor(new Type[]{});
+var driver = ctor.Invoke(null) as GpioDriver;
+
+ctl = new GpioController(PinNumberingScheme.Board, driver);
+```
+---
+
 <p align="center">
     <img src="images/06-flash-leds.gif" width="500px" >
 </p>
