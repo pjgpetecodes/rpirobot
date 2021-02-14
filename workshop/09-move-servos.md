@@ -21,12 +21,12 @@
     sudo reboot
     ```
 
-- Close your PUTtY window and Wait for around 1 minute, then open PUTtY again and reconnet to your Pi. 
+- Close your PUTtY window and wait for around 1 minute, then open PUTtY again and reconnet to your Pi. 
 - Navigate to your  `robot_firmware` directory with the following command;
 
 
     ```
-    cd /home/pi/share/pirobot/robot_firmware
+    cd /home/pi/share/rpirobot/robot_firmware
     ```
 
 - Add the IoT Device Bindings Nuget Package to your project with;
