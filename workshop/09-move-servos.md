@@ -1,8 +1,34 @@
 # Move the Servos #
 
-
 - Return to your SSH Session
-- Make sure you're in the `robot_firmware` directory
+
+- We now need to enable PWM... Run the following command to edit the Boot Config File;
+
+    ```
+    sudo nano /boot/config.txt
+    ```
+
+- Add the following line to the very bottom of the file;
+
+    ```
+    dtoverlay=pwm-2chan
+    ```
+
+- Hold the `ctrl` key and press `x`, then press the `y` key and hit the `enter` key to accept your changes.
+- Reboot your Raspberry Pi with the following command;
+
+    ```
+    sudo reboot
+    ```
+
+- Close your PUTtY window and Wait for around 1 minute, then open PUTtY again and reconnet to your Pi. 
+- Navigate to your  `robot_firmware` directory with the following command;
+
+
+    ```
+    cd /home/pi/share/pirobot/robot_firmware
+    ```
+
 - Add the IoT Device Bindings Nuget Package to your project with;
 
     ```
