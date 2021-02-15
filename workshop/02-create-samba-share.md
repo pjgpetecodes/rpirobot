@@ -3,6 +3,10 @@
 ## Step 2 - Create Samba Share ##
 
 - Connect to the Raspberry Pi using SSH (PUTtY for instance).
+- You can get a copy of PUTtY here;
+
+    https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
+    
 - Install Samba;
 
     ```
