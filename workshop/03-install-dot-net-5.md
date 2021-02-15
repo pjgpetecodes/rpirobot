@@ -8,6 +8,8 @@
 
     https://code.visualstudio.com/
 
+- On the "Select Additional Tasks" page, make sure to check all of the checkboxes.
+
 - Open an SSH Session to your Raspberry pi using PUTtY if you don't already have one open.
 - Update your Pi Using;
 
