@@ -6,7 +6,15 @@
 - You can get a copy of PUTtY here;
 
     https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
-    
+
+- Start PUTtY and enter "raspberrypi" in the "Host Name (or IP address)" text box;
+- Press the "Open" button at the bottom of the window.
+- Accept any warnings which may appear.
+- Enter a user name or `pi` and press the enter key
+- Enter a password of `raspberry` and press the enter key
+
+- You will now be logged in to your Pi.
+
 - Install Samba;
 
     ```
