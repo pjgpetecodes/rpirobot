@@ -48,6 +48,8 @@
     Guest ok = yes
     ```
 
+- Save the file by pressing `ctrl` and the `x` key, then press the `y` key to confirm and press the `enter` key to save and exit.
+
 - Create a Samba Password (you can use the same password as logging in to your pi for now);
 
     ```
