@@ -18,6 +18,8 @@
     chmod 777 -R robot_firmware
     ```
 
+- This command won't produce a resonse, but it will have worked all the same.
+
 - Enter the Pi Robot directory;
 
     ```

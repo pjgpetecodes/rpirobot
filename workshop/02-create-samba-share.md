@@ -8,10 +8,15 @@
     https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
 
 - Start PUTtY and enter "raspberrypi" in the "Host Name (or IP address)" text box;
-- Press the "Open" button at the bottom of the window.
+
+<p align="center">
+    <img src="images/02-putty.png" width="500px" >
+</p>
+
+- Press the `Open` button at the bottom of the window.
 - Accept any warnings which may appear.
 - Enter a user name or `pi` and press the enter key
-- Enter a password of `raspberry` and press the enter key
+- Enter a password of `raspberry` and press the enter key. The password won't be displayed on screen for security reasons.
 
 - You will now be logged in to your Pi.
 
@@ -33,7 +38,7 @@
     sudo nano /etc/samba/smb.conf
     ```
 
-- Add the following to the bottom of the file and save;
+- Add the following to the very bottom of the file;
 
     ```    
     [share]
@@ -50,11 +55,13 @@
 
 - Save the file by pressing `ctrl` and the `x` key, then press the `y` key to confirm and press the `enter` key to save and exit.
 
-- Create a Samba Password (you can use the same password as logging in to your pi for now);
+- Create a Samba Password with;
 
     ```
     sudo smbpasswd -a pi
     ```
+
+- You can use the same password as logging in to your pi for now. You'll need to enter the password twice to confirm. As with logging in to the Pi, the password won't be displayed on screen for security reasons.
 
 - Restart the Pi;
 
