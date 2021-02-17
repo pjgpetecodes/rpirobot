@@ -26,7 +26,7 @@
 
 | Servo Driver Board Pin | Raspberry Pi Pin |
 | - | - |
-| GND | 25 |
+| GND | 20 |
 | 1   | 35 |
 | 2   | 12 |
 | 3   | 13 |
