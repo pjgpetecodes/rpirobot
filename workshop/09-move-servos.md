@@ -38,7 +38,21 @@
 - You can find more information about the IoT Device Bindings here;
 
     https://github.com/dotnet/iot/tree/master/src/devices
+    
+- Enabling Hardware PWM on Raspberry Pi
+    Edit the /boot/config.txt file and add the dtoverlay line in the file. You need root privileges for this:
+    
+    ```
+    sudo nano /boot/config.txt
+    ```
+    Then reboot:
 
+    ```bash
+    sudo reboot
+    ```
+
+You are all setup, the basic example should now work with the PWM and channel you have selected.
+   
 - Back in your project in VS Code
 - Add the following using statements to the list of using statements;
 
@@ -106,7 +120,7 @@
         - The Minimum Pulse Width
         - The Maximum Pulse Width
             - Both the Min and Max Pulse Widths take a certain amount of trial an error to work out.
-            - These two paramaters will determine the rotation of teh servo and how far around to each end stop you can reach.
+            - These two paramaters will determine the rotation of the servo and how far around to each end stop you can reach.
     - We then Start both Servos.
     - Next we create a loop.
     - In the loop;
