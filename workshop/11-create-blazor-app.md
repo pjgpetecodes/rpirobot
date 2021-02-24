@@ -6,10 +6,10 @@
     dotnet new blazorwasm --hosted -o robot_web
     ```
 
-- Enter the `robot_web\Client` directory
+- Enter the `robot_web` directory
 
     ```
-    cd robot_web\Client
+    cd robot_web
     ```
 
 - Add a the SignalR Client nuget package with;
@@ -27,7 +27,6 @@
 - Open the solution in VS code with
 
     ```
-    cd ..
     code .
     ```
 
