@@ -40,6 +40,14 @@ We can now see if it all works...
     <img src="images/14-firewall-warning.png" width="500px" >
 </p>
 
+- Finally, return to your PUTtY Session and run your robot code one last time
+
+    ```
+    dotnet run
+    ```
+    
+- You should now be able to move the sliders and control your robot arm remotely... Congratulations!!!
+
 | Previous | Next |
 | -------- | ---- |
 | [< Step 13 - Add Control Code](13-add-control-code.md) | [Return to the Start >](README.md) |
