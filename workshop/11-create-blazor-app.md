@@ -6,7 +6,7 @@
     dotnet new blazorwasm --hosted -o robot_web
     ```
 
-- Enter the `robot_web` directory.
+- Enter the `robot_web\Client` directory.
 - Add a the SignalR Client nuget package with;
 
     ```
