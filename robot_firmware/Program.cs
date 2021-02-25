@@ -33,7 +33,7 @@ namespace robot_firmware
                 700,
                 2400);
 
-            using SoftwarePwmChannel pwmChannel3 = new SoftwarePwmChannel(27, 50, 0.5);
+            using SoftwarePwmChannel pwmChannel3 = new SoftwarePwmChannel(27, 50, 0.5, true);
             using ServoMotor servoMotor3 = new ServoMotor(
                 pwmChannel3,
                 180,
@@ -52,6 +52,7 @@ namespace robot_firmware
                         ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator,
                     };                    
                 })
+		.WithAutomaticReconnect()                
                 .Build();
             
             try
