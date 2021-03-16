@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Navigation;
 using System.Device.Gpio;
 using System.Threading;
 using System.Device.Pwm;
+using System.Device.Pwm.Drivers;
 using Iot.Device.ServoMotor;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
@@ -31,6 +32,8 @@ namespace uno_project
         ServoMotor servoMotor1;
         PwmChannel pwmChannel2;
         ServoMotor servoMotor2;
+        SoftwarePwmChannel pwmChannel3;
+        ServoMotor servoMotor3;
 
         public MainPage()
         {
@@ -50,10 +53,16 @@ namespace uno_project
                 700,
                 2400);
 
+            pwmChannel3 = new SoftwarePwmChannel(27, 50, 0.5, true);
+            servoMotor3 = new ServoMotor(
+                pwmChannel3,
+                180,
+                900,
+                2100);
+
             servoMotor1.Start();
             servoMotor2.Start();
-
-
+            servoMotor3.Start();
         }
 
         private void servo1_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
@@ -71,6 +80,7 @@ namespace uno_project
         private void servo3_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
         {
             Console.WriteLine(e.NewValue);
+            MoveToAngle(servoMotor3, Convert.ToInt32(e.NewValue));
         }
 
         static void MoveToAngle(ServoMotor Servo, int Angle) {
