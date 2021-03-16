@@ -96,6 +96,7 @@ namespace robot_firmware
                     servoMotor2.Stop();
                     servoMotor3.Stop();
                 }
+                
         }
 
         static void MoveToAngle(ServoMotor Servo, int Angle) {

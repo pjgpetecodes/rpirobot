@@ -22,8 +22,9 @@
     <label>
         Servo 3 (@servo3):
     </label>
-    <MatSlider @bind-Value="@servo3" Immediate="true" Step="1" EnableStep="true" ValueMin="0" ValueMax="180" Markers="true" Pin="true" TValue="int" Discrete="true"></MatSlider>
+    <MatSlider @bind-Value="@servo3" Immediate="true" Step="1" EnableStep="true" ValueMin="75" ValueMax="180" Markers="true" Pin="true" TValue="int" Discrete="true"></MatSlider>
 </div>
+
 
 @code {
     private int _servo1 = 90;
