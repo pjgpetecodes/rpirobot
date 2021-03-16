@@ -112,15 +112,15 @@
     - We then Start all three Servos.
     - Next we create a loop.
     - In the loop;
-        - Move the First Servo to an angle of 50 degrees
+        - Move the First Servo to an angle of 70 degrees
         - Pause for 2 seconds
-        - Move the Second Servo to an angle of 50 degrees
+        - Move the Second Servo to an angle of 20 degrees
         - Pause for 2 seconds
         - Move the Third Servo to an angle of 80 degrees
         - Pause for 2 seconds
-        - Move the First Servo to an angle of 100
+        - Move the First Servo to an angle of 150
         - Pause for 2 seconds
-        - Move the Second Servo to an angle of 100
+        - Move the Second Servo to an angle of 50
         - Pause for 2 seconds
         - Move the Third Servo to an angle of 150 degrees
         - Pause for 2 seconds
