@@ -2,6 +2,7 @@
 using System.Device.Gpio;
 using System.Threading;
 using System.Device.Pwm;
+using System.Device.Pwm.Drivers;
 using Iot.Device.ServoMotor;
 
 namespace robot_firmware
@@ -27,8 +28,16 @@ namespace robot_firmware
                 700,
                 2400);
 
+            using SoftwarePwmChannel pwmChannel3 = new SoftwarePwmChannel(27, 50, 0.5, true);
+            using ServoMotor servoMotor3 = new ServoMotor(
+                pwmChannel3,
+                180,
+                900,
+                2100);
+
             servoMotor1.Start();
             servoMotor2.Start();
+            servoMotor3.Start();
 
             try
             {
@@ -38,16 +47,22 @@ namespace robot_firmware
                     Thread.Sleep(2000);
                     MoveToAngle(servoMotor2, 20);
                     Thread.Sleep(2000);
+                    MoveToAngle(servoMotor3, 80);
+                    Thread.Sleep(2000);
                     MoveToAngle(servoMotor1, 150);
                     Thread.Sleep(2000);
                     MoveToAngle(servoMotor2, 50);
                     Thread.Sleep(2000);
+                    MoveToAngle(servoMotor3, 150);
+                    Thread.Sleep(2000);
+                    
                 }
             }
             finally
             {
                 servoMotor1.Stop();
                 servoMotor2.Stop();
+                servoMotor3.Stop();
             }
 
         }
