@@ -63,6 +63,7 @@ Now we can create the C# Code for our App.
     ```cs
     private int _servo1 = 90;
     private int _servo2 = 90;
+    private int _servo2 = 135;
     ```
 
 - Add a SignalR Hub Connection variable below the backing variables;
@@ -95,6 +96,17 @@ Now we can add Properties for our backing variables. These properties connect to
             _servo2 = value;
             this.StateHasChanged();
             hubConnection.SendAsync("SendMessage", "servo2", _servo2.ToString());
+        }
+    }
+
+    public int servo3
+    {
+        get => _servo3;
+        set
+        {
+            _servo3 = value;
+            this.StateHasChanged();
+            hubConnection.SendAsync("SendMessage", "servo3", _servo3.ToString());
         }
     }
     ```
