@@ -75,14 +75,15 @@ For this workshop you'll need to buy some components before hand. The following 
 
     https://thepihut.com/products/raspberry-pi-breadboard-half-size
 
-- Some Cardboard, sellotape and a gluegun if you want to build the components into a functioning Robot Arm!
+- Cliff Agius and his son have created a Robot Arm to print in the `3D_Prints` directory;
 
-- Or, you could 3d Print this...
+- An alternative is this one;
 
     https://www.thingiverse.com/thing:1015238
 
-This workshop will appeal to all knowledge levels. A working knowledge of programming will help, but all the code will be shared on GitHub!
+- Or, if you're really adventurous, some Cardboard, sellotape and a gluegun if you want to build the components into a diy robot arm!
 
+This workshop will appeal to all knowledge levels. A working knowledge of programming will help, but all the code will be shared on GitHub!
 ## Let's get started!
 
 Get started below;
