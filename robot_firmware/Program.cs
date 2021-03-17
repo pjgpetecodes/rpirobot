@@ -2,6 +2,7 @@
 using System.Device.Gpio;
 using System.Threading;
 using System.Device.Pwm;
+using System.Device.Pwm.Drivers;
 using Iot.Device.ServoMotor;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR.Client;
@@ -33,8 +34,16 @@ namespace robot_firmware
                 700,
                 2400);
 
+            using SoftwarePwmChannel pwmChannel3 = new SoftwarePwmChannel(27, 50, 0.5, true);
+            using ServoMotor servoMotor3 = new ServoMotor(
+                pwmChannel3,
+                180,
+                900,
+                2100);
+
             servoMotor1.Start();
             servoMotor2.Start();
+            servoMotor3.Start();
 
             connection = new HubConnectionBuilder()
                 .WithUrl("https://<PC IP Address>:5001/chathub",conf =>
@@ -44,6 +53,7 @@ namespace robot_firmware
                         ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator,
                     };                    
                 })
+                .WithAutomaticReconnect()                
                 .Build();
             
                 try
@@ -58,6 +68,10 @@ namespace robot_firmware
                         else if (user == "servo2")
                         {
                             MoveToAngle(servoMotor2, Int32.Parse(message));
+                        }
+                        else if (user == "servo3")
+                        {
+                            MoveToAngle(servoMotor3, Int32.Parse(message));
                         }
                         Console.WriteLine($"{message} posted by: {user}");
                     });
@@ -81,8 +95,9 @@ namespace robot_firmware
                 {
                     servoMotor1.Stop();
                     servoMotor2.Stop();
+                    servoMotor3.Stop();
                 }
-
+                
         }
 
         static void MoveToAngle(ServoMotor Servo, int Angle) {
