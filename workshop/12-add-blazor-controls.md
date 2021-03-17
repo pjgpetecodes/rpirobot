@@ -54,6 +54,13 @@ Next, we can add the sliders to control the Servos.
         </label>
         <MatSlider @bind-Value="@servo2" Immediate="true" Step="1" EnableStep="true" ValueMin="0" ValueMax="180" Markers="true" Pin="true" TValue="int" Discrete="true"></MatSlider>
     </div>
+
+    <div class="form-group row">
+        <label>
+            Servo 3 (@servo3):
+        </label>
+        <MatSlider @bind-Value="@servo3" Immediate="true" Step="1" EnableStep="true" ValueMin="0" ValueMax="180" Markers="true" Pin="true" TValue="int" Discrete="true"></MatSlider>
+    </div>
     ```
 
 | Previous | Next |

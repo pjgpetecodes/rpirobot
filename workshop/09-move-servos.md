@@ -1,34 +1,8 @@
 # Move the Servos #
 
+
 - Return to your SSH Session
-
-- We now need to enable PWM... Run the following command to edit the Boot Config File;
-
-    ```
-    sudo nano /boot/config.txt
-    ```
-
-- Add the following line to the very bottom of the file;
-
-    ```
-    dtoverlay=pwm-2chan
-    ```
-
-- Hold the `ctrl` key and press `x`, then press the `y` key and hit the `enter` key to accept your changes.
-- Reboot your Raspberry Pi with the following command;
-
-    ```
-    sudo reboot
-    ```
-
-- Close your PUTtY window and wait for around 1 minute, then open PUTtY again and reconnet to your Pi. 
-- Navigate to your  `robot_firmware` directory with the following command;
-
-
-    ```
-    cd /home/pi/share/rpirobot/robot_firmware
-    ```
-
+- Make sure you're in the `robot_firmware` directory
 - Add the IoT Device Bindings Nuget Package to your project with;
 
     ```
@@ -44,6 +18,7 @@
 
     ```cs
     using System.Device.Pwm;
+    using System.Device.Pwm.Drivers;
     using Iot.Device.ServoMotor;
     ```
 
@@ -68,8 +43,16 @@
         700,
         2400);
 
+    using SoftwarePwmChannel pwmChannel3 = new SoftwarePwmChannel(27, 50, 0.5, true);
+    using ServoMotor servoMotor3 = new ServoMotor(
+        pwmChannel3,
+        180,
+        900,
+        2100);
+
     servoMotor1.Start();
     servoMotor2.Start();
+    servoMotor3.Start();
 
     try
     {
@@ -79,45 +62,25 @@
             Thread.Sleep(2000);
             MoveToAngle(servoMotor2, 20);
             Thread.Sleep(2000);
+            MoveToAngle(servoMotor3, 80);
+            Thread.Sleep(2000);
             MoveToAngle(servoMotor1, 150);
             Thread.Sleep(2000);
             MoveToAngle(servoMotor2, 50);
             Thread.Sleep(2000);
+            MoveToAngle(servoMotor3, 150);
+            Thread.Sleep(2000);
+            
         }
     }
     finally
     {
         servoMotor1.Stop();
         servoMotor2.Stop();
+        servoMotor3.Stop();
     }
     
     ```
-
-- This section of code;
-    - Create two `PwmCHannel` objects. These are Pulse Width Modulation Channels, one per Servo Motor we'll be driving.
-    - Each PWM Channel is created passing in;
-        - The Chip Number
-        - The PWM Channel
-        - The Frquency
-        - Optionally, the Duty Cycle Percentage
-    - We also then create two `ServoMotor` objects, passing in;
-        - The PWM Channel we'll be using
-        - The Maximum Angle of the Servo - We're using a 180 degree Servo, so we pass in 180 here
-        - The Minimum Pulse Width
-        - The Maximum Pulse Width
-            - Both the Min and Max Pulse Widths take a certain amount of trial an error to work out.
-            - These two paramaters will determine the rotation of teh servo and how far around to each end stop you can reach.
-    - We then Start both Servos.
-    - Next we create a loop.
-    - In the loop;
-        - Move the First Servo to an angle of 50 degrees
-        - Pause for 2 seconds
-        - Move the Second Servo to an angle of 50 degrees
-        - Pause for 2 seconds
-        - Move the First Servo to an angle of 100
-        - Pause for 2 seconds
-        - Move the Second Servo to an angle of 100
-    - A finally section then stops the servos before the program exits.
 
 - Add the following sub after the Main sub;
 
@@ -127,8 +90,45 @@
     }
     ```
 
-- This sub simply takes which Servo we want to move and the Angle we'd like to move it to
-    - The `Servo.WriteAngle` sub can take either an angle or a fequency here. We're using an angle. 
+- This new code;
+    - Creates two hardware `PwmChannel` objects and one `SoftwarePwmChannel` object. These are Pulse Width Modulation Channels.
+    - Each Hardware PWM Channel is created passing in;
+        - The Chip Number
+        - The PWM Channel
+        - The Frquency
+        - Optionally, the Duty Cycle Percentage
+    - The Software PWM Channel takes;
+        - The Pin Number over which the PWM is sent
+        - The Frequency
+        - The Duty Cycle
+        - Use a precision timer (Otherwise it's really jerky!)
+    - We also then create three `ServoMotor` objects, passing in;
+        - The PWM Channel we'll be using
+        - The Maximum Angle of the Servo - We're using a 180 degree Servo, so we pass in 180 here
+        - The Minimum Pulse Width
+        - The Maximum Pulse Width
+            - Both the Min and Max Pulse Widths take a certain amount of trial an error to work out.
+            - These two paramaters will determine the rotation of teh servo and how far around to each end stop you can reach.
+    - We then Start all three Servos.
+    - Next we create a loop.
+    - In the loop;
+        - Move the First Servo to an angle of 70 degrees
+        - Pause for 2 seconds
+        - Move the Second Servo to an angle of 20 degrees
+        - Pause for 2 seconds
+        - Move the Third Servo to an angle of 80 degrees
+        - Pause for 2 seconds
+        - Move the First Servo to an angle of 150
+        - Pause for 2 seconds
+        - Move the Second Servo to an angle of 50
+        - Pause for 2 seconds
+        - Move the Third Servo to an angle of 150 degrees
+        - Pause for 2 seconds
+    - A section then stops the servos before the program exits.
+    - Finally, a section of code which performs the servo moving
+        - This sub simply takes which Servo we want to move and the Angle we'd like to move it to
+        - The `Servo.WriteAngle` sub can take either an angle or a frequency here. We're using an angle. 
+
 - Save the file
 - Run the application with;
 
