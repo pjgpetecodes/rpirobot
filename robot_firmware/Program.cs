@@ -46,13 +46,14 @@ namespace robot_firmware
             servoMotor3.Start();
 
             connection = new HubConnectionBuilder()
-                .WithUrl("https://<PC IP Address>:5001/chathub",conf =>
+                .WithUrl("https://192.168.1.162:5001/chathub",conf =>
                 {
                     conf.HttpMessageHandlerFactory = (x) => new HttpClientHandler
                     {
                         ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator,
                     };                    
                 })
+                .WithAutomaticReconnect()                
                 .Build();
             
                 try
