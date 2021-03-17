@@ -46,7 +46,7 @@ namespace robot_firmware
             servoMotor3.Start();
 
             connection = new HubConnectionBuilder()
-                .WithUrl("https://192.168.1.162:5001/chathub",conf =>
+                .WithUrl("https://<PC IP Address>:5001/chathub",conf =>
                 {
                     conf.HttpMessageHandlerFactory = (x) => new HttpClientHandler
                     {
@@ -97,6 +97,7 @@ namespace robot_firmware
                     servoMotor2.Stop();
                     servoMotor3.Stop();
                 }
+                
         }
 
         static void MoveToAngle(ServoMotor Servo, int Angle) {
