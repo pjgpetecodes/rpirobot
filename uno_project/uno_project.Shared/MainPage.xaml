@@ -19,7 +19,7 @@
             <Slider Name="servo2" HorizontalAlignment="Stretch" Margin="20,0,20,20" Maximum="180" LargeChange="10" TickFrequency="10" ValueChanged="servo2_ValueChanged" Value="70"></Slider>
 
             <TextBlock HorizontalAlignment="Stretch" Margin="20,0,20,20">Servo 3:</TextBlock>
-            <Slider Name="servo3" HorizontalAlignment="Stretch" Margin="20,0,20,20" Maximum="180" LargeChange="10" TickFrequency="10" ValueChanged="servo3_ValueChanged"></Slider>
+            <Slider Name="servo3" HorizontalAlignment="Stretch" Margin="20,0,20,20" Minimum="80" Maximum="180" LargeChange="10" TickFrequency="10" ValueChanged="servo3_ValueChanged" value="120"></Slider>
         </StackPanel>
 
 
