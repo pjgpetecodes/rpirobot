@@ -65,6 +65,7 @@
                             ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator,
                         };                    
                     })
+                    .WithAutomaticReconnect()                
                     .Build();
                 
     try

@@ -4,8 +4,6 @@
 @inject NavigationManager NavigationManager
 @implements IAsyncDisposable
 
-
-
 <div class="form-group row">
     <label>
         Servo 1 (@servo1):
@@ -24,23 +22,8 @@
     <label>
         Servo 3 (@servo3):
     </label>
-    <MatSlider @bind-Value="@servo3" Immediate="true" Step="1" EnableStep="true" ValueMin="0" ValueMax="180" Markers="true" Pin="true" TValue="int" Discrete="true"></MatSlider>
+    <MatSlider @bind-Value="@servo3" Immediate="true" Step="1" EnableStep="true" ValueMin="75" ValueMax="180" Markers="true" Pin="true" TValue="int" Discrete="true"></MatSlider>
 </div>
-
-<div class="form-group">
-    <label>
-        User:
-        <input @bind="userInput" />
-    </label>
-</div>
-
-<div class="form-group">
-    <label>
-        Message:
-        <input @bind="messageInput" size="50" />
-    </label>
-</div>
-<button @onclick="Send" disabled="@(!IsConnected)">Send</button>
 
 <hr>
 
@@ -56,13 +39,12 @@
 
     private HubConnection hubConnection;
     private List<string> messages = new List<string>();
-    private string userInput;
-    private string messageInput;
 
     protected override async Task OnInitializedAsync()
     {
         hubConnection = new HubConnectionBuilder()
             .WithUrl(NavigationManager.ToAbsoluteUri("/chathub"))
+            .WithAutomaticReconnect()                
             .Build();
 
         hubConnection.On<string, string>("ReceiveMessage", (user, message) =>
@@ -74,9 +56,6 @@
 
         await hubConnection.StartAsync();
     }
-
-    Task Send() =>
-        hubConnection.SendAsync("SendMessage", userInput, messageInput);
 
     public bool IsConnected =>
         hubConnection.State == HubConnectionState.Connected;
@@ -122,6 +101,6 @@
 
     private int _servo1 = 90;
     private int _servo2 = 90;
-    private int _servo3 = 90;
+    private int _servo3 = 135;
 
 }
