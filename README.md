@@ -1,20 +1,24 @@
-# Raspberry Pi Robot with .NET 5, Blazor and SignalR
+# Raspberry Pi Robot with .NET 7, Blazor and SignalR
 
 This repository is the code for a 3d Printed, Raspberry Pi Based, .NET Programmed, Blazor and SignalR controlled Robot Arm workshop.
 
 You can watch a couple of recordings of a run through of how the software works here;
 
-#FestiveTechCalendar - Building a Raspberry Pi Robot Arm with .NET 5, Blazor and SignalR:
+## NE Bytes - 2022
 
-- http://bit.ly/dotnet5robotfestivevideo
+https://bit.ly/dotnet6robotnebytesvideo
 
-DDD 2020
+## FestiveTechCalendar 2021
 
-- http://bit.ly/dotnet5robotdddvideo
+http://bit.ly/dotnet5robotfestivevideo
+
+## DDD 2020
+
+http://bit.ly/dotnet5robotdddvideo
 
 ## robot_firmware
 
-This is the Pi .NET 5 Firmware
+This is the Pi .NET 7 Firmware
 
 ## robot_web
 
