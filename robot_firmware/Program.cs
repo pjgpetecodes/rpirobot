@@ -24,7 +24,7 @@ namespace robot_firmware
                 pwmChannel1,
                 180,
                 700,
-                2400);
+                2100);
 
             using PwmChannel pwmChannel2 = PwmChannel.Create(0, 1, 50);
             using ServoMotor servoMotor2 = new ServoMotor(
