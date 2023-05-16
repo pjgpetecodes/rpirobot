@@ -24,7 +24,7 @@ namespace robot_firmware
                 pwmChannel1,
                 180,
                 700,
-                2100);
+                2400);
 
             using PwmChannel pwmChannel2 = PwmChannel.Create(0, 1, 50);
             using ServoMotor servoMotor2 = new ServoMotor(
@@ -45,7 +45,7 @@ namespace robot_firmware
             servoMotor3.Start();
 
             connection = new HubConnectionBuilder()
-                .WithUrl("https://192.168.1.158:5001/chathub",conf =>
+                .WithUrl("https://bcsrobotdevuksapp.azurewebsites.net/chathub",conf =>
                 {
                     conf.HttpMessageHandlerFactory = (x) => new HttpClientHandler
                     {
@@ -54,6 +54,16 @@ namespace robot_firmware
                 })
 		.WithAutomaticReconnect()                
                 .Build();
+
+                Console.CancelKeyPress += async (sender, e) =>
+                {
+                    Console.WriteLine("Disconnecting...");
+                    servoMotor1.Stop();
+                    servoMotor2.Stop();
+                    servoMotor3.Stop();
+                    await connection.DisposeAsync();
+                    Environment.Exit(0);
+                };
             
             try
             {
@@ -92,14 +102,13 @@ namespace robot_firmware
                 
             }
 
-            servoMotor1.Stop();
-            servoMotor2.Stop();
-            servoMotor3.Stop();
+            
         }      
 
         static void MoveToAngle(ServoMotor Servo, int Angle) {
 
-            Servo.WriteAngle(Angle);            
+            Servo.WriteAngle(Angle);  
+            
         }
 
     }
