@@ -17,9 +17,7 @@ namespace robot_speech_maui
         public void OnPropertyChanged([CallerMemberName] string name = "") =>
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 
-        public ICommand NewCommand { private set; get; }
         public ICommand ListenCommand { private set; get; }
-        public ICommand CancelCommand { private set; get; }
 
         private static HubConnection hubConnection;
 
@@ -35,12 +33,16 @@ namespace robot_speech_maui
         private IDispatcherTimer disableServo2Timer;
         private IDispatcherTimer disableServo3Timer;
 
+        private string _listButtonText = "Begin Listening";
         private bool _listenEnabled = true;
         private string _listeningText = "";
         private string _recognisedText = "";
         private string _actionText = "";
         private string _amountText = "";
 
+        /// <summary>
+        /// The Servo 1 Position
+        /// </summary>
         public double servo1
         {
             get => _servo1;
@@ -61,6 +63,9 @@ namespace robot_speech_maui
             }
         }
 
+        /// <summary>
+        /// The Servo 2 Position
+        /// </summary>
         public double servo2
         {
             get => _servo2;
@@ -80,6 +85,9 @@ namespace robot_speech_maui
             }
         }
 
+        /// <summary>
+        /// The Servo 3 Position
+        /// </summary>
         public double servo3
         {
             get => _servo3;
@@ -99,6 +107,9 @@ namespace robot_speech_maui
             }
         }
 
+        /// <summary>
+        /// Whether the Servo 1 Slider is Enabled 
+        /// </summary>
         public bool Servo1_Enabled
         {
             get => _servo1_enabled;
@@ -110,6 +121,9 @@ namespace robot_speech_maui
             }
         }
 
+        /// <summary>
+        /// Whether the Servo 2 Slider is Enabled 
+        /// </summary>
         public bool Servo2_Enabled
         {
             get => _servo2_enabled;
@@ -120,6 +134,9 @@ namespace robot_speech_maui
             }
         }
 
+        /// <summary>
+        /// Whether the Servo 3 Slider is Enabled 
+        /// </summary>
         public bool Servo3_Enabled
         {
             get => _servo3_enabled;
@@ -131,6 +148,9 @@ namespace robot_speech_maui
             }
         }
 
+        /// <summary>
+        /// The Listening Label Text
+        /// </summary>
         public string ListeningText
         {
             get { return _listeningText; }
@@ -144,6 +164,9 @@ namespace robot_speech_maui
             }
         }
 
+        /// <summary>
+        /// The Speech Recognition Result Text
+        /// </summary>
         public string RecognisedText
         {
             get { return _recognisedText; }
@@ -157,6 +180,9 @@ namespace robot_speech_maui
             }
         }
 
+        /// <summary>
+        /// The CLU Action REsult
+        /// </summary>
         public string ActionText
         {
             get { return _actionText; }
@@ -170,6 +196,9 @@ namespace robot_speech_maui
             }
         }
 
+        /// <summary>
+        /// The CLU Amount Text
+        /// </summary>
         public string AmountText
         {
             get { return _amountText; }
@@ -183,7 +212,9 @@ namespace robot_speech_maui
             }
         }
 
-
+        /// <summary>
+        /// Whether the Listen Button is Enabled
+        /// </summary>
         public bool ListenEnabled
         {
             get { return _listenEnabled; }
@@ -197,11 +228,35 @@ namespace robot_speech_maui
             }
         }
 
+        /// <summary>
+        /// The Listen Button Text
+        /// </summary>
+        public string ListenButtonText
+        {
+            get { return _listButtonText; }
+            set
+            {
+                if (_listButtonText != value)
+                {
+                    _listButtonText = value;
+                    OnPropertyChanged("ListenButtonText");
+                }
+            }
+        }
 
+        /// <summary>
+        /// The Robot Control Class Constructor
+        /// </summary>
         public RobotControl()
         {
+            //
+            // Setup the SignalR Connection
+            //
             SetupConnection();
 
+            //
+            // Setup the handler for the Listen Button
+            //
             ListenCommand = new Command(
                 execute: () =>
                 {
@@ -209,7 +264,18 @@ namespace robot_speech_maui
                 }
             );
 
+            //
+            // Create the Disable Servo 1 Slider Timer
+            //
+            CreateDisableSlidersTimers();
 
+        }
+
+        /// <summary>
+        /// Create the Disable Sliders Timers
+        /// </summary>
+        private void CreateDisableSlidersTimers()
+        {
             disableServo1Timer = Application.Current.Dispatcher.CreateTimer();
             disableServo1Timer.IsRepeating = false;
             disableServo1Timer.Interval = TimeSpan.FromSeconds(1);
@@ -222,6 +288,9 @@ namespace robot_speech_maui
                 });
             };
 
+            //
+            // Create the Disable Servo 1 Slider Timer
+            //
             disableServo2Timer = Application.Current.Dispatcher.CreateTimer();
             disableServo2Timer.IsRepeating = false;
             disableServo2Timer.Interval = TimeSpan.FromSeconds(1);
@@ -247,159 +316,93 @@ namespace robot_speech_maui
 
                 });
             };
-
         }
 
+        /// <summary>
+        /// Begin Listening using the Speech API and deliver to CLU
+        /// </summary>
         private async void BeginListening()
         {
             try
             {
-
+                //
+                // Default Variables
+                //
+                ListenButtonText = "Listening";
                 ListenEnabled = false;
                 ListeningText = "";
                 RecognisedText = "";
                 ActionText = "";
                 AmountText = "";
 
+                //
+                // Setup the Speech API
+                //
                 var speechConfig = SpeechConfig.FromSubscription(AppSettings.SpeechKey, AppSettings.SpeechRegion);
                 speechConfig.SpeechRecognitionLanguage = "en-US";
 
+                //
+                // Use the Default Microphone
+                //
                 using var audioConfig = AudioConfig.FromDefaultMicrophoneInput();
 
-                // Creates an intent recognizer in the specified language using microphone as audio input.
+                //
+                // Create an intent recognizer in the specified language using microphone as audio input.
+                //
                 using (var intentRecognizer = new IntentRecognizer(speechConfig, audioConfig))
                 {
+
+                    //
+                    // Create the Conversational Language Understanding Model
+                    //
                     var cluModel = new ConversationalLanguageUnderstandingModel(
                         AppSettings.LanguageKey,
                         AppSettings.LanguageEndpoint,
                         AppSettings.CluProjectName,
                         AppSettings.CluDeploymentName);
+
+                    //
+                    // Create a CLU Collection
+                    //
                     var collection = new LanguageUnderstandingModelCollection();
                     collection.Add(cluModel);
                     intentRecognizer.ApplyLanguageModels(collection);
 
                     ListeningText = "Speak into your microphone.";
+
+                    //
+                    // Listen for Speech and Recognise the result
+                    //
                     var recognitionResult = await intentRecognizer.RecognizeOnceAsync().ConfigureAwait(false);
 
-                    // Checks result.
+                    //
+                    // If the Speech API has recognised one of th defined Intents...
+                    //
                     if (recognitionResult.Reason == ResultReason.RecognizedIntent)
                     {
+                        //
+                        // An Intent was recognised by the Speech API
+                        //
                         ListeningText = $"\n RECOGNIZED: Text={recognitionResult.Text}";
                         ListeningText += $"\n    Intent Id: {recognitionResult.IntentId}.";
 
+                        //
+                        // Get the CLU JSON Result Text
+                        //
                         var json = recognitionResult.Properties.GetProperty(PropertyId.LanguageUnderstandingServiceResponse_JsonResult);
 
                         RecognisedText = $"    Language Understanding JSON: {json}.";
 
+                        //
+                        // Parse the JSOn elements of the CLU Result 
+                        //
                         JsonDocument doc = JsonDocument.Parse(json);
 
-                        JsonElement root = doc.RootElement;
-                        JsonElement result = root.GetProperty("result");
-                        JsonElement prediction = result.GetProperty("prediction");
-                        JsonElement entities = prediction.GetProperty("entities");
-
-                        try
-                        {
-                            string movementType = "";
-                            int movementValue = 0;
-
-                            // Mapping of word representation to numeric values
-                            Dictionary<string, int> wordToNumberMap = new Dictionary<string, int>()
-                        {
-                            { "zero", 0 },
-                            { "one", 1 },
-                            { "two", 2 },
-                            { "three", 3 },
-                            { "four", 4 },
-                            { "five", 5 },
-                            { "six", 6 },
-                            { "seven", 7 },
-                            { "eight", 8 },
-                            { "nine", 9 },
-                        };
-
-                            foreach (JsonElement entity in entities.EnumerateArray())
-                            {
-                                string category = entity.GetProperty("category").GetString();
-                                string text = entity.GetProperty("text").GetString();
-
-                                if (category == "Movement")
-                                {
-                                    movementType = text;
-                                    ActionText = text;
-                                }
-                                else if (category == "Amount")
-                                {
-                                    text = text.ToLower().Replace("degrees", "");
-                                    text = text.ToLower().Replace("minus", "-");
-                                    text = text.Replace(" ", "");
-
-                                    if (wordToNumberMap.TryGetValue(text, out int numericValue))
-                                    {
-                                        movementValue = numericValue;
-                                    }
-                                    else
-                                    {
-                                        movementValue = int.Parse(text);
-                                    }
-
-                                    AmountText = movementValue.ToString();
-
-                                }
-                            }
-
-                            Console.WriteLine("Movement Type: " + movementType);
-                            Console.WriteLine("Movement Value: " + movementValue);
-
-                            switch (movementType)
-                            {
-                                case "rotate":
-
-                                    if ((servo1 + movementValue < 180) && (servo1 + movementValue > 0))
-                                    {
-                                        servo1 += movementValue;
-                                        await hubConnection.InvokeAsync("SendMessage", "servo1", servo1.ToString());
-                                    }
-                                    else
-                                    {
-                                        Console.WriteLine("Cannot rotate that far");
-                                    }
-
-                                    break;
-
-                                case "reach":
-
-                                    if ((servo2 + movementValue < 180) && (servo2 + movementValue > 0))
-                                    {
-                                        servo2 += movementValue;
-                                        await hubConnection.InvokeAsync("SendMessage", "servo2", servo2.ToString());
-                                    }
-                                    else
-                                    {
-                                        Console.WriteLine("Cannot reach that far");
-                                    }
-                                    break;
-
-                                case "grab":
-
-                                    if ((servo3 + movementValue < 180) && (servo3 + movementValue > 65))
-                                    {
-                                        servo3 += movementValue;
-                                        await hubConnection.InvokeAsync("SendMessage", "servo3", servo3.ToString());
-                                    }
-                                    else
-                                    {
-                                        Console.WriteLine("Cannot grab that far");
-                                    }
-                                    break;
-
-                            }
-                        }
-                        catch (System.Exception ex)
-                        {
-                            Console.WriteLine(ex.Message);
-                        }
-
+                        //
+                        // Move the Robot based on the Speech and CLU results
+                        //
+                        MoveRobotBySpeech(doc);
+                        
                     }
                     else if (recognitionResult.Reason == ResultReason.RecognizedSpeech)
                     {
@@ -430,12 +433,165 @@ namespace robot_speech_maui
                 Console.WriteLine(ex.ToString());
             }
 
+            ListenButtonText = "Begin Listening";
             ListenEnabled = true;
 
         }
 
+        private async void MoveRobotBySpeech(JsonDocument doc)
+        {
+            JsonElement root = doc.RootElement;
+            JsonElement result = root.GetProperty("result");
+            JsonElement prediction = result.GetProperty("prediction");
+            JsonElement entities = prediction.GetProperty("entities");
+
+            //
+            // Parse the Intent results and determine the Robot Arm Movement Type and Amount
+            //
+            try
+            {
+                //
+                // Default the Movement Type and Values
+                //
+                string movementType = "";
+                int movementValue = 0;
+
+                //
+                // Sometimes CLU can return words instead of numbers... Normally just for numbers between 0 and 9 though.
+                //
+                Dictionary<string, int> wordToNumberMap = new Dictionary<string, int>()
+                        {
+                            { "zero", 0 },
+                            { "one", 1 },
+                            { "two", 2 },
+                            { "three", 3 },
+                            { "four", 4 },
+                            { "five", 5 },
+                            { "six", 6 },
+                            { "seven", 7 },
+                            { "eight", 8 },
+                            { "nine", 9 },
+                        };
+
+                //
+                // Loop through each of the CLU Entities until we get the Movement and Amount
+                //
+                foreach (JsonElement entity in entities.EnumerateArray())
+                {
+                    //
+                    // Get the Category and Text... For us we're after a Category of "Movement" or "Amount"
+                    //
+                    // These two categories are defined in the CLU Model
+                    //
+                    string category = entity.GetProperty("category").GetString();
+                    string text = entity.GetProperty("text").GetString();
+
+                    switch (category)
+                    {
+                        case "Movement":                    // The Movement Type (Rotate/Reach/Grab)
+
+                            movementType = text;
+                            ActionText = text;
+                            break;
+
+                        case "Amount":                      // The Amount to move by (in Degrees)
+
+                            //
+                            // Remove Degrees, convert the word "Minus" to a negative and remove any spaces
+                            //
+                            // Training the model better might 
+                            //
+                            text = text.ToLower().Replace("degrees", "");
+                            text = text.ToLower().Replace("minus", "-");
+                            text = text.Replace(" ", "");
+
+                            //
+                            // If this is a text representation of a number, then convert it
+                            //
+                            if (wordToNumberMap.TryGetValue(text, out int numericValue))
+                            {
+                                movementValue = numericValue;
+                            }
+                            else
+                            {
+                                movementValue = int.Parse(text);
+                            }
+
+                            AmountText = movementValue.ToString();
+                            break;
+
+                    }
+                    
+                }
+
+                Console.WriteLine("Movement Type: " + movementType);
+                Console.WriteLine("Movement Value: " + movementValue);
+
+                //
+                // Move the part of the Arm based on the Movement Type
+                //
+                // We also make sure that we don't try to move the Arm parts out of range
+                //
+                switch (movementType)
+                {
+                    case "rotate":
+
+                        if ((servo1 + movementValue < 180) && (servo1 + movementValue > 0))
+                        {
+                            servo1 += movementValue;
+                            await hubConnection.InvokeAsync("SendMessage", "servo1", servo1.ToString());
+                        }
+                        else
+                        {
+                            Console.WriteLine("Cannot rotate that far");
+                        }
+
+                        break;
+
+                    case "reach":
+
+                        if ((servo2 + movementValue < 180) && (servo2 + movementValue > 0))
+                        {
+                            servo2 += movementValue;
+                            await hubConnection.InvokeAsync("SendMessage", "servo2", servo2.ToString());
+                        }
+                        else
+                        {
+                            Console.WriteLine("Cannot reach that far");
+                        }
+                        break;
+
+                    case "grab":
+
+                        if ((servo3 + movementValue < 180) && (servo3 + movementValue > 65))
+                        {
+                            servo3 += movementValue;
+                            await hubConnection.InvokeAsync("SendMessage", "servo3", servo3.ToString());
+                        }
+                        else
+                        {
+                            Console.WriteLine("Cannot grab that far");
+                        }
+                        break;
+
+                }
+            }
+            catch (System.Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+        }
+
+        /// <summary>
+        /// Setup the SignalR Connection
+        /// </summary>
         private async void SetupConnection()
         {
+
+            //
+            // Create a new connection to the SignalR Hub
+            //
             hubConnection = new HubConnectionBuilder()
                    .WithUrl("https://bcsrobotdevuksapp.azurewebsites.net/chathub", conf =>
                    {
@@ -449,6 +605,9 @@ namespace robot_speech_maui
 
             try
             {
+                //
+                // Setup the callback for messages to control the Robot Arm
+                //
                 hubConnection.On<string, string>("ReceiveMessage", (user, message) =>
                 {
 

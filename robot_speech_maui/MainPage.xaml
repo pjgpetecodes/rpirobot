@@ -13,14 +13,14 @@
             </Grid.ColumnDefinitions>
 
             <!-- Left column -->
-            <StackLayout Grid.Column="0" Spacing="25" Padding="30,0">
+            <StackLayout Grid.Column="0" Spacing="25" Padding="30,0" VerticalOptions="Center">
                 <Image
                     Source="dotnet_bot.png"
                     SemanticProperties.Description="Cute dot net bot waving hi to you!"
                     HeightRequest="100"
                     HorizontalOptions="Center" />
 
-                <Button Text="Listen" Command="{Binding ListenCommand}" IsEnabled="{Binding ListenEnabled}"/>
+                <Button Command="{Binding ListenCommand}" IsEnabled="{Binding ListenEnabled}" Text="{Binding ListenButtonText}" WidthRequest="400"/>
 
                 <Label
                     SemanticProperties.HeadingLevel="Level1"
@@ -49,7 +49,7 @@
             </StackLayout>
 
             <!-- Right column -->
-            <StackLayout Grid.Column="1" Spacing="25" Padding="30,0">
+            <StackLayout Grid.Column="1" Spacing="25" Padding="30,0" VerticalOptions="Center">
                 <WebView Source="https://obs.ninja/?view=robot&amp;scene&amp;room=bcsdemo&amp;password=BCSDemo1234" HeightRequest="200" WidthRequest="300" />
 
                 <Label
