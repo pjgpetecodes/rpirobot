@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:robot_speech_maui"
+             
+             x:Class="robot_speech_maui.MainPage">
+
+    <ScrollView>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Left column -->
+            <StackLayout Grid.Column="0" Spacing="25" Padding="30,0">
+                <Image
+                    Source="dotnet_bot.png"
+                    SemanticProperties.Description="Cute dot net bot waving hi to you!"
+                    HeightRequest="100"
+                    HorizontalOptions="Center" />
+
+                <Button Text="Listen" Command="{Binding ListenCommand}" IsEnabled="{Binding ListenEnabled}"/>
+
+                <Label
+                    SemanticProperties.HeadingLevel="Level1"
+                    FontSize="32"
+                    HorizontalOptions="Center" HorizontalTextAlignment="Center"
+                    HeightRequest="400"
+                    Text="{Binding ListeningText}"/>
+
+                <Label
+                    SemanticProperties.HeadingLevel="Level2"
+                    FontSize="28"
+                    HorizontalOptions="Center" HorizontalTextAlignment="Center"
+                    Text="{Binding RecognisedText}"/>
+
+                <Label
+                    SemanticProperties.HeadingLevel="Level2"
+                    FontSize="24"
+                    HorizontalOptions="Center" HorizontalTextAlignment="Center"
+                    Text="{Binding ActionText}"/>
+
+                <Label
+                    SemanticProperties.HeadingLevel="Level2"
+                    FontSize="24"
+                    HorizontalOptions="Center" HorizontalTextAlignment="Center"
+                    Text="{Binding AmountText}"/>
+            </StackLayout>
+
+            <!-- Right column -->
+            <StackLayout Grid.Column="1" Spacing="25" Padding="30,0">
+                <WebView Source="https://obs.ninja/?view=robot&amp;scene&amp;room=bcsdemo&amp;password=BCSDemo1234" HeightRequest="200" WidthRequest="300" />
+
+                <Label
+                    Text="Control the Robot with .NET Maui!"
+                    SemanticProperties.HeadingLevel="Level1"
+                    FontSize="32"
+                    HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+
+                <Label
+                    Text="Rotation"
+                    SemanticProperties.HeadingLevel="Level2"
+                    SemanticProperties.Description="The Robot Rotation Control"
+                    FontSize="12"
+                    HorizontalOptions="Center" />
+                <Slider x:Name="RotationSlider" Minimum="0" Maximum="180" Value="{Binding servo1}" HorizontalOptions="Center" WidthRequest="400" IsEnabled="{Binding Servo1_Enabled}"/>
+
+                <Label
+                    Text="Reach"
+                    SemanticProperties.HeadingLevel="Level2"
+                    SemanticProperties.Description="The Robot Reach Control"
+                    FontSize="12"
+                    HorizontalOptions="Center" />
+                <Slider x:Name="ReachSlider" Minimum="0" Maximum="180" Value="{Binding servo2}" HorizontalOptions="Center" WidthRequest="400" IsEnabled="{Binding Servo2_Enabled}"/>
+
+                <Label
+                    Text="Grab"
+                    SemanticProperties.HeadingLevel="Level2"
+                    SemanticProperties.Description="The Robot Grab Control"
+                    FontSize="12"
+                    HorizontalOptions="Center" />
+                <Slider x:Name="GrabSlider" Minimum="75" Maximum="180" Value="{Binding servo3}"  HorizontalOptions="Center" WidthRequest="400" IsEnabled="{Binding Servo2_Enabled}"/>
+            </StackLayout>
+
+        </Grid>
+    </ScrollView>
+
+</ContentPage>
