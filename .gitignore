@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/robot_speech_maui/AppSettings.settings
+/robot_speech_maui/appsettings.json
+/robot_speech_maui/AppSettings.cs
