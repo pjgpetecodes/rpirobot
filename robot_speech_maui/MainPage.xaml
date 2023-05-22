@@ -20,6 +20,12 @@
                     HeightRequest="100"
                     HorizontalOptions="Center" />
 
+                <Label
+                    Text="Control the Robot with Your Voice!"
+                    SemanticProperties.HeadingLevel="Level1"
+                    FontSize="32"
+                    HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+
                 <Button Command="{Binding ListenCommand}" IsEnabled="{Binding ListenEnabled}" Text="{Binding ListenButtonText}" WidthRequest="400"/>
 
                 <Label
@@ -31,19 +37,19 @@
 
                 <Label
                     SemanticProperties.HeadingLevel="Level2"
-                    FontSize="28"
+                    FontSize="18"
                     HorizontalOptions="Center" HorizontalTextAlignment="Center"
                     Text="{Binding RecognisedText}"/>
 
                 <Label
                     SemanticProperties.HeadingLevel="Level2"
-                    FontSize="24"
+                    FontSize="18"
                     HorizontalOptions="Center" HorizontalTextAlignment="Center"
                     Text="{Binding ActionText}"/>
 
                 <Label
                     SemanticProperties.HeadingLevel="Level2"
-                    FontSize="24"
+                    FontSize="18"
                     HorizontalOptions="Center" HorizontalTextAlignment="Center"
                     Text="{Binding AmountText}"/>
             </StackLayout>
