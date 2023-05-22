@@ -383,7 +383,7 @@ namespace robot_speech_maui
                         //
                         // An Intent was recognised by the Speech API
                         //
-                        ListeningText = $"\n RECOGNIZED: Text={recognitionResult.Text}";
+                        ListeningText = $"RECOGNIZED: Text={recognitionResult.Text}";
                         ListeningText += $"\n    Intent Id: {recognitionResult.IntentId}.";
 
                         //
@@ -407,7 +407,7 @@ namespace robot_speech_maui
                     else if (recognitionResult.Reason == ResultReason.RecognizedSpeech)
                     {
                         ListeningText = $"RECOGNIZED: Text={recognitionResult.Text}";
-                        ListeningText += $"    Intent not recognized.";
+                        ListeningText += $"\n    Intent not recognized.";
                     }
                     else if (recognitionResult.Reason == ResultReason.NoMatch)
                     {
@@ -420,9 +420,9 @@ namespace robot_speech_maui
 
                         if (cancellation.Reason == CancellationReason.Error)
                         {
-                            ListeningText += $"CANCELED: ErrorCode={cancellation.ErrorCode}";
-                            ListeningText += $"CANCELED: ErrorDetails={cancellation.ErrorDetails}";
-                            ListeningText += $"CANCELED: Did you update the subscription info?";
+                            ListeningText += $"\nCANCELED: ErrorCode={cancellation.ErrorCode}";
+                            ListeningText += $"\nCANCELED: ErrorDetails={cancellation.ErrorDetails}";
+                            ListeningText += $"\nCANCELED: Did you update the subscription info?";
                         }
                     }
                 }
@@ -438,6 +438,10 @@ namespace robot_speech_maui
 
         }
 
+        /// <summary>
+        /// Move the Robot based on the Speech and CLU results
+        /// </summary>
+        /// <param name="doc"></param>
         private async void MoveRobotBySpeech(JsonDocument doc)
         {
             JsonElement root = doc.RootElement;
