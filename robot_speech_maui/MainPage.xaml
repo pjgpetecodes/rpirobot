@@ -43,10 +43,22 @@
 
                 <Label
                     SemanticProperties.HeadingLevel="Level2"
+                    FontSize="24" FontAttributes="Bold"
+                    HorizontalOptions="Center" HorizontalTextAlignment="Center"
+                    Text="Action:"/>
+
+                <Label
+                    SemanticProperties.HeadingLevel="Level2"
                     FontSize="18"
                     HorizontalOptions="Center" HorizontalTextAlignment="Center"
                     Text="{Binding ActionText}"/>
 
+                <Label
+                    SemanticProperties.HeadingLevel="Level2"
+                    FontSize="24" FontAttributes="Bold"
+                    HorizontalOptions="Center" HorizontalTextAlignment="Center"
+                    Text="Amount:"/>
+                
                 <Label
                     SemanticProperties.HeadingLevel="Level2"
                     FontSize="18"
@@ -56,7 +68,7 @@
 
             <!-- Right column -->
             <StackLayout Grid.Column="1" Spacing="25" Padding="30,0" VerticalOptions="Center">
-                <WebView Source="https://obs.ninja/?view=robot&amp;scene&amp;room=bcsdemo&amp;password=BCSDemo1234" HeightRequest="200" WidthRequest="300" />
+                <WebView Source="https://obs.ninja/?view=robot&amp;scene&amp;room=bcsdemo&amp;password=BCSDemo1234" HeightRequest="500" WidthRequest="700" />
 
                 <Label
                     Text="Control the Robot with .NET Maui!"
