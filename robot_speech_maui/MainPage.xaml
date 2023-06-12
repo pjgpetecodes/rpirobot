@@ -37,12 +37,6 @@
 
                 <Label
                     SemanticProperties.HeadingLevel="Level2"
-                    FontSize="18"
-                    HorizontalOptions="Center" HorizontalTextAlignment="Center"
-                    Text="{Binding RecognisedText}"/>
-
-                <Label
-                    SemanticProperties.HeadingLevel="Level2"
                     FontSize="24" FontAttributes="Bold"
                     HorizontalOptions="Center" HorizontalTextAlignment="Center"
                     Text="Action:"/>
@@ -58,12 +52,19 @@
                     FontSize="24" FontAttributes="Bold"
                     HorizontalOptions="Center" HorizontalTextAlignment="Center"
                     Text="Amount:"/>
-                
+
                 <Label
                     SemanticProperties.HeadingLevel="Level2"
                     FontSize="18"
                     HorizontalOptions="Center" HorizontalTextAlignment="Center"
                     Text="{Binding AmountText}"/>
+
+                <Label
+                    SemanticProperties.HeadingLevel="Level2"
+                    FontSize="18"
+                    HorizontalOptions="Center" HorizontalTextAlignment="Center"
+                    Text="{Binding RecognisedText}"/>
+
             </StackLayout>
 
             <!-- Right column -->

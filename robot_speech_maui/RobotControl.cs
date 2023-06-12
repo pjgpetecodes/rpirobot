@@ -539,14 +539,24 @@ namespace robot_speech_maui
                 switch (movementType)
                 {
                     case "rotate":
+                    case "rotates":
 
                         if ((servo1 + movementValue < 180) && (servo1 + movementValue > 0))
                         {
+                            //
+                            // Convert the Movement Type and Amount to Speech
+                            //
+                            SpeakMovementOperation(movementType, movementValue.ToString());
+
                             servo1 += movementValue;
                             await hubConnection.InvokeAsync("SendMessage", "servo1", servo1.ToString());
                         }
                         else
                         {
+                            //
+                            // Let the user know that it can't move that far
+                            //
+                            SpeakMovementOperation("fail", movementValue.ToString());
                             Console.WriteLine("Cannot rotate that far");
                         }
 
@@ -556,11 +566,20 @@ namespace robot_speech_maui
 
                         if ((servo2 + movementValue < 180) && (servo2 + movementValue > 0))
                         {
+                            //
+                            // Convert the Movement Type and Amount to Speech
+                            //
+                            SpeakMovementOperation(movementType, movementValue.ToString());
+                            
                             servo2 += movementValue;
                             await hubConnection.InvokeAsync("SendMessage", "servo2", servo2.ToString());
                         }
                         else
                         {
+                            //
+                            // Let the user know that it can't move that far
+                            //
+                            SpeakMovementOperation("fail", movementValue.ToString());
                             Console.WriteLine("Cannot reach that far");
                         }
                         break;
@@ -569,11 +588,20 @@ namespace robot_speech_maui
 
                         if ((servo3 + movementValue < 180) && (servo3 + movementValue > 65))
                         {
+                            //
+                            // Convert the Movement Type and Amount to Speech
+                            //
+                            SpeakMovementOperation(movementType, movementValue.ToString());
+                            
                             servo3 += movementValue;
                             await hubConnection.InvokeAsync("SendMessage", "servo3", servo3.ToString());
                         }
                         else
                         {
+                            //
+                            // Let the user know that it can't move that far
+                            //
+                            SpeakMovementOperation("fail", movementValue.ToString());
                             Console.WriteLine("Cannot grab that far");
                         }
                         break;
@@ -585,6 +613,88 @@ namespace robot_speech_maui
                 Console.WriteLine(ex.Message);
             }
 
+        }
+
+        /// <summary>
+        /// Convert the Movement Type and Value into Speech
+        /// </summary>
+        /// <param name="Direction"></param>
+        /// <param name="Amount"></param>
+        private async void SpeakMovementOperation(string MovementType, string MovementAmount)
+        {
+            try {
+                // Using the speech api, convert the direction and amount to speech...
+                var speechConfig = SpeechConfig.FromSubscription(AppSettings.SpeechKey, AppSettings.SpeechRegion);
+
+                // The language of the voice that speaks.
+                speechConfig.SpeechSynthesisVoiceName = "en-US-JennyNeural";
+
+                using (var speechSynthesizer = new SpeechSynthesizer(speechConfig))
+                {
+
+                    string text = "";
+
+                    switch (MovementType)
+                    {
+                        case "rotate":
+                        case "rotates":
+
+                            text = $"Rotating the Arm by {MovementAmount} degrees";
+                            break;
+
+                        case "reach":
+
+                            text = $"Reaching by {MovementAmount} degrees";
+                            break;
+
+                        case "grab":
+
+                            text = $"Grabbing by {MovementAmount} degrees";
+                            break;
+
+                        case "fail":
+
+                            text = $"Sorry, I can't move by as much as {MovementAmount} degrees";
+                            break;
+
+                    }
+
+                    var speechSynthesisResult = await speechSynthesizer.SpeakTextAsync(text);
+                    OutputSpeechSynthesisResult(speechSynthesisResult, text);
+                }
+            }
+            catch (System.Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// The Speech Output Result
+        /// </summary>
+        /// <param name="speechSynthesisResult"></param>
+        /// <param name="text"></param>
+        private static void OutputSpeechSynthesisResult(SpeechSynthesisResult speechSynthesisResult, string text)
+        {
+            switch (speechSynthesisResult.Reason)
+            {
+                case ResultReason.SynthesizingAudioCompleted:
+                    Console.WriteLine($"Speech synthesized for text: [{text}]");
+                    break;
+                case ResultReason.Canceled:
+                    var cancellation = SpeechSynthesisCancellationDetails.FromResult(speechSynthesisResult);
+                    Console.WriteLine($"CANCELED: Reason={cancellation.Reason}");
+
+                    if (cancellation.Reason == CancellationReason.Error)
+                    {
+                        Console.WriteLine($"CANCELED: ErrorCode={cancellation.ErrorCode}");
+                        Console.WriteLine($"CANCELED: ErrorDetails=[{cancellation.ErrorDetails}]");
+                        Console.WriteLine($"CANCELED: Did you set the speech resource key and region values?");
+                    }
+                    break;
+                default:
+                    break;
+            }
         }
 
         /// <summary>
