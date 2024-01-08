@@ -536,7 +536,7 @@ namespace robot_speech_maui
                 //
                 // We also make sure that we don't try to move the Arm parts out of range
                 //
-                switch (movementType)
+                switch (movementType.ToLower())
                 {
                     case "rotate":
                     case "rotates":

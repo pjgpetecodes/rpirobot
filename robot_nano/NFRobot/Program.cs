@@ -5,6 +5,7 @@ using nanoFramework.SignalR.Client;
 using System;
 using System.Device.Pwm;
 using System.Diagnostics;
+using System.Net.NetworkInformation;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 
@@ -13,7 +14,7 @@ namespace NFRobot
     public class Program
     {
         // Set-up Esp32 Pins.
-        private const int pwmPin1 = 17;
+        private const int pwmPin1 = 23;
         private const int pwmPin2 = 18;
         private const int pwmPin3 = 20;
 
@@ -21,6 +22,7 @@ namespace NFRobot
         {
             Debug.WriteLine("Hello from nanoFramework!");
 
+            /*
             const string Ssid = "";
             const string Password = "";
             // Give 60 seconds to the wifi join to happen
@@ -34,12 +36,19 @@ namespace NFRobot
                 {
                     Debug.WriteLine($"ex: {WifiNetworkHelper.HelperException}");
                 }
+
+                return;
             }
             else
             {
                 // Otherwise, you are connected and have a valid IP and date
                 Debug.WriteLine($"Connected to the network: {WifiNetworkHelper.Status}");
             }
+            */
+
+            WaitIP();
+
+            Thread.Sleep(5000); // Sleep for 5 seconds to wait for network
 
             // Set-up the ESP32 PWM Channel on the required pin.
             Configuration.SetPinFunction(pwmPin1, DeviceFunction.PWM1);
@@ -115,6 +124,16 @@ namespace NFRobot
                     Console.WriteLine($"{message} posted by: {user}");
                 });
 
+                try
+                {
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                    throw;
+                }
+
                 //start connection
                 hubConnection.Start();
             }
@@ -141,6 +160,24 @@ namespace NFRobot
         static void MoveToAngle(ServoMotor Servo, int Angle)
         {
             Servo.WriteAngle(Angle);
+        }
+
+        static void WaitIP()
+        {
+            Console.WriteLine("Wait for IP");
+            while (true)
+            {
+                NetworkInterface ni = NetworkInterface.GetAllNetworkInterfaces()[0];
+                if (ni.IPv4Address != null && ni.IPv4Address.Length > 0)
+                {
+                    if (ni.IPv4Address[0] != '0')
+                    {
+                        Console.WriteLine("Have IP " + ni.IPv4Address);
+                        break;
+                    }
+                }
+                Thread.Sleep(1000);
+            }
         }
     }
 }
