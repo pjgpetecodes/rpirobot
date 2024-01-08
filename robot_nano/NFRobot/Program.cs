@@ -22,33 +22,10 @@ namespace NFRobot
         {
             Debug.WriteLine("Hello from nanoFramework!");
 
-            /*
-            const string Ssid = "";
-            const string Password = "";
-            // Give 60 seconds to the wifi join to happen
-            CancellationTokenSource cs = new(60000);
-            var success = WifiNetworkHelper.ConnectDhcp(Ssid, Password, requiresDateTime: true, token: cs.Token);
-            if (!success)
-            {
-                // Something went wrong, you can get details with the ConnectionError property:
-                Debug.WriteLine($"Can't connect to the network, error: {WifiNetworkHelper.Status}");
-                if (WifiNetworkHelper.HelperException != null)
-                {
-                    Debug.WriteLine($"ex: {WifiNetworkHelper.HelperException}");
-                }
-
-                return;
-            }
-            else
-            {
-                // Otherwise, you are connected and have a valid IP and date
-                Debug.WriteLine($"Connected to the network: {WifiNetworkHelper.Status}");
-            }
-            */
-
+            // Wait for the network connection.
             WaitIP();
 
-            Thread.Sleep(5000); // Sleep for 5 seconds to wait for network
+            Thread.Sleep(5000);
 
             // Set-up the ESP32 PWM Channel on the required pin.
             Configuration.SetPinFunction(pwmPin1, DeviceFunction.PWM1);
@@ -94,7 +71,7 @@ namespace NFRobot
             servoMotor3.Start();
 
             //setup connection
-            var options = new HubConnectionOptions() { Reconnect = true, Certificate = new X509Certificate(Resource.GetBytes(Resource.BinaryResources.DigiCertGlobalRootG2)) };
+            var options = new HubConnectionOptions() {  Reconnect = true, Certificate = new X509Certificate(Resource.GetBytes(Resource.BinaryResources.DigiCertGlobalRootG2)) };
             HubConnection hubConnection = new HubConnection("https://bcsrobotdevuksapp.azurewebsites.net/chathub", options: options);
 
             hubConnection.Closed += HubConnection_Closed;
@@ -126,16 +103,15 @@ namespace NFRobot
 
                 try
                 {
-
+                    //start connection
+                    hubConnection.Start();
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.ToString());
                     throw;
                 }
-
-                //start connection
-                hubConnection.Start();
+                
             }
             catch (Exception ex)
             {
@@ -146,10 +122,7 @@ namespace NFRobot
             //
             // Keep the code running...
             //
-            while (true)
-            {
-                Thread.Sleep(Timeout.Infinite);
-            }
+            Thread.Sleep(Timeout.Infinite);
         }
 
         private static void HubConnection_Closed(object sender, SignalrEventMessageArgs message)
