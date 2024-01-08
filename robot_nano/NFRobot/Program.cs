@@ -15,8 +15,8 @@ namespace NFRobot
     {
         // Set-up Esp32 Pins.
         private const int pwmPin1 = 23;
-        private const int pwmPin2 = 18;
-        private const int pwmPin3 = 20;
+        private const int pwmPin2 = 21;
+        private const int pwmPin3 = 19;
 
         public static void Main()
         {
@@ -73,7 +73,7 @@ namespace NFRobot
             //setup connection
             var options = new HubConnectionOptions() {  Reconnect = true, Certificate = new X509Certificate(Resource.GetBytes(Resource.BinaryResources.DigiCertGlobalRootG2)) };
             HubConnection hubConnection = new HubConnection("https://bcsrobotdevuksapp.azurewebsites.net/chathub", options: options);
-
+            
             hubConnection.Closed += HubConnection_Closed;
 
             try
