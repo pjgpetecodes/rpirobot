@@ -4,6 +4,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{11A8DD76-328B-46DF-9F39-F559912D0360}") = "NFRobot", "NFRobot\NFRobot.nfproj", "{C6DE4609-2972-4B9E-9014-6669A714C2CE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1DB9A81D-7B08-4AD2-AC6E-B7CD66FB78C8} = {1DB9A81D-7B08-4AD2-AC6E-B7CD66FB78C8}
+		{71C3E5DB-C987-4C95-B6E0-9EE588241A6B} = {71C3E5DB-C987-4C95-B6E0-9EE588241A6B}
+	EndProjectSection
+EndProject
+Project("{11A8DD76-328B-46DF-9F39-F559912D0360}") = "nanoFramework.SignalR.Client", "..\..\nanoFramework.SignalR.Client\nanoFramework.SignalR.Client\nanoFramework.SignalR.Client.nfproj", "{1DB9A81D-7B08-4AD2-AC6E-B7CD66FB78C8}"
+EndProject
+Project("{11A8DD76-328B-46DF-9F39-F559912D0360}") = "System.Net.WebSockets", "..\..\System.Net.WebSockets\WebSockets\System.Net.WebSockets.nfproj", "{71C3E5DB-C987-4C95-B6E0-9EE588241A6B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,6 +25,18 @@ Global
 		{C6DE4609-2972-4B9E-9014-6669A714C2CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6DE4609-2972-4B9E-9014-6669A714C2CE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C6DE4609-2972-4B9E-9014-6669A714C2CE}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{1DB9A81D-7B08-4AD2-AC6E-B7CD66FB78C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DB9A81D-7B08-4AD2-AC6E-B7CD66FB78C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DB9A81D-7B08-4AD2-AC6E-B7CD66FB78C8}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{1DB9A81D-7B08-4AD2-AC6E-B7CD66FB78C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DB9A81D-7B08-4AD2-AC6E-B7CD66FB78C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DB9A81D-7B08-4AD2-AC6E-B7CD66FB78C8}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{71C3E5DB-C987-4C95-B6E0-9EE588241A6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71C3E5DB-C987-4C95-B6E0-9EE588241A6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71C3E5DB-C987-4C95-B6E0-9EE588241A6B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{71C3E5DB-C987-4C95-B6E0-9EE588241A6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71C3E5DB-C987-4C95-B6E0-9EE588241A6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71C3E5DB-C987-4C95-B6E0-9EE588241A6B}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

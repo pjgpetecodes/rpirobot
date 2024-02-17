@@ -99,7 +99,7 @@
                     SemanticProperties.Description="The Robot Grab Control"
                     FontSize="12"
                     HorizontalOptions="Center" />
-                <Slider x:Name="GrabSlider" Minimum="75" Maximum="180" Value="{Binding servo3}"  HorizontalOptions="Center" WidthRequest="400" IsEnabled="{Binding Servo2_Enabled}"/>
+                <Slider x:Name="GrabSlider" Minimum="75" Maximum="180" Value="{Binding servo3}"  HorizontalOptions="Center" WidthRequest="400" IsEnabled="{Binding Servo3_Enabled}"/>
             </StackLayout>
 
         </Grid>

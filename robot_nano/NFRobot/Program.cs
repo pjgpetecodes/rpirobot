@@ -18,6 +18,10 @@ namespace NFRobot
         private const int pwmPin2 = 21;
         private const int pwmPin3 = 19;
 
+        private static int counter = 0;
+
+        private static HubConnection hubConnection;
+
         public static void Main()
         {
             Debug.WriteLine("Hello from nanoFramework!");
@@ -26,6 +30,8 @@ namespace NFRobot
             WaitIP();
 
             Thread.Sleep(5000);
+
+            Console.WriteLine("Ready to start moving!");
 
             // Set-up the ESP32 PWM Channel on the required pin.
             Configuration.SetPinFunction(pwmPin1, DeviceFunction.PWM1);
@@ -70,9 +76,17 @@ namespace NFRobot
             servoMotor2.Start();
             servoMotor3.Start();
 
-            //setup connection
-            var options = new HubConnectionOptions() {  Reconnect = true, Certificate = new X509Certificate(Resource.GetBytes(Resource.BinaryResources.DigiCertGlobalRootG2)) };
-            HubConnection hubConnection = new HubConnection("https://bcsrobotdevuksapp.azurewebsites.net/chathub", options: options);
+            try
+            {
+                //setup connection
+                var options = new HubConnectionOptions() { Reconnect = true, Certificate = new X509Certificate(Resource.GetBytes(Resource.BinaryResources.DigiCertGlobalRootG2)) };
+                hubConnection = new HubConnection("https://bcsrobotdevuksapp.azurewebsites.net/chathub", options: options);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString()); 
+                throw;
+            }
             
             hubConnection.Closed += HubConnection_Closed;
 
@@ -98,7 +112,16 @@ namespace NFRobot
                     {
                         MoveToAngle(servoMotor3, Int32.Parse(message));
                     }
-                    Console.WriteLine($"{message} posted by: {user}");
+                    //Console.WriteLine($"{message} posted by: {user}");
+
+                    // Get the current time again
+                    //DateTime endTime = DateTime.UtcNow;
+
+                    // Calculate the elapsed time
+                    //TimeSpan elapsedTime = endTime - startTime;
+
+                    // Print the elapsed time
+                    //Console.WriteLine($"Time taken in main program.cs: {elapsedTime.TotalMilliseconds} ms");
                 });
 
                 try

@@ -27,6 +27,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resource.resx">
+      <Generator>nFResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Resources\BaltimoreCyberTrustRoot.der" />
+    <None Include="Resources\DigiCertGlobalRootG2.der" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="Iot.Device.ServoMotor">
       <HintPath>..\packages\nanoFramework.Iot.Device.ServoMotor.1.2.436\lib\Iot.Device.ServoMotor.dll</HintPath>
     </Reference>
@@ -44,9 +53,6 @@
     </Reference>
     <Reference Include="nanoFramework.Runtime.Events">
       <HintPath>..\packages\nanoFramework.Runtime.Events.1.11.15\lib\nanoFramework.Runtime.Events.dll</HintPath>
-    </Reference>
-    <Reference Include="nanoFramework.SignalR.Client">
-      <HintPath>..\packages\nanoFramework.SignalR.Client.1.1.59\lib\nanoFramework.SignalR.Client.dll</HintPath>
     </Reference>
     <Reference Include="nanoFramework.System.Collections">
       <HintPath>..\packages\nanoFramework.System.Collections.1.5.31\lib\nanoFramework.System.Collections.dll</HintPath>
@@ -66,21 +72,13 @@
     <Reference Include="System.Net">
       <HintPath>..\packages\nanoFramework.System.Net.1.10.64\lib\System.Net.dll</HintPath>
     </Reference>
-    <Reference Include="System.Net.WebSockets">
-      <HintPath>..\packages\nanoFramework.System.Net.WebSockets.Client.1.1.75\lib\System.Net.WebSockets.dll</HintPath>
-    </Reference>
     <Reference Include="System.Threading">
       <HintPath>..\packages\nanoFramework.System.Threading.1.1.32\lib\System.Threading.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-    <EmbeddedResource Include="Resource.resx">
-      <Generator>nFResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <None Include="Resources\BaltimoreCyberTrustRoot.der" />
-    <None Include="Resources\DigiCertGlobalRootG2.der" />
+    <ProjectReference Include="..\..\..\nanoFramework.SignalR.Client\nanoFramework.SignalR.Client\nanoFramework.SignalR.Client.nfproj" />
+    <ProjectReference Include="..\..\..\System.Net.WebSockets\WebSockets\System.Net.WebSockets.nfproj" />
   </ItemGroup>
   <Import Project="$(NanoFrameworkProjectSystemPath)NFProjectSystem.CSharp.targets" Condition="Exists('$(NanoFrameworkProjectSystemPath)NFProjectSystem.CSharp.targets')" />
   <ProjectExtensions>
